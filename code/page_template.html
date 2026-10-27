@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>From Saint to Wish</title>
+<meta name="description" content="The holy and wishing wells of Britain and Ireland: {{n_holy|int}} holy wells mapped, who they are dedicated to, the language of their names, and the cures, rags and offerings recorded at Irish wells.">
+<meta property="og:title" content="From saint to wish: the holy and wishing wells of Britain and Ireland">
+<meta property="og:description" content="{{n_holy|int}} holy wells, their saints and languages, and the folk practices recorded at {{nms_described|int}} described Irish wells.">
+<meta property="og:image" content="https://tristan-hotham.github.io/holy-wells/header.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+/* Pale limestone and well water. Teal = water and the wells. Saint colours: Brigid red, Patrick green, Mary blue. */
+:root{
+  --bg:#F1EFE8; --panel:#E6E3D8; --fg:#17232B; --muted:#5F6A6E; --rule:#D5D1C4; --card:#FAF9F4; --border:#C3BFB1;
+  --hot:#0E7C86; --rag:#C0412B; --pat:#2F7D4A; --mary:#2F5DA6; --col:#7B4F9E; --gold:#A87A12; --moss:#6E8A3A; --other:#8C857A; --none:#BDB8AC;
+  --sea:#DCE7E7; --dot:#8D8A80;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11181C; --panel:#1A2328; --fg:#E6EAE8; --muted:#9AA6A8; --rule:#2C383E; --card:#172025; --border:#3A474D;
+  --hot:#37B3BC; --rag:#EE7058; --pat:#5DBB7C; --mary:#6E9BE6; --col:#B58AD8; --gold:#D9AB3F; --moss:#9DBA62; --other:#A49D90; --none:#57605F;
+  --sea:#0E171A; --dot:#7E8A8A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11181C; --panel:#1A2328; --fg:#E6EAE8; --muted:#9AA6A8; --rule:#2C383E; --card:#172025; --border:#3A474D;
+  --hot:#37B3BC; --rag:#EE7058; --pat:#5DBB7C; --mary:#6E9BE6; --col:#B58AD8; --gold:#D9AB3F; --moss:#9DBA62; --other:#A49D90; --none:#57605F;
+  --sea:#0E171A; --dot:#7E8A8A; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:680px;margin:0 auto;padding-block:28px 64px}
+.wrap .bleed{width:min(1080px,calc(100vw - 32px));margin-left:calc((100% - min(1080px,100vw - 32px))/2);margin-right:0}
+a{color:inherit;text-decoration-color:var(--hot);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--hot);color:#fff;padding:5px 8px;font-weight:500}
+header.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;align-items:end;border-bottom:6px double var(--fg);padding-bottom:22px;margin-top:18px}
+h1{font:900 clamp(52px,13vw,112px)/.86 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance;font-variation-settings:"SOFT" 50}
+h1 em{font-style:normal;color:var(--hot)}
+.mark{width:clamp(92px,21vw,176px);height:auto;display:block}
+.dek{grid-column:1/-1;font-size:21px;line-height:1.42;margin:8px 0 0;max-width:44ch}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:14px}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:52px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--hot);display:block;letter-spacing:.1em;margin-bottom:10px}
+h3{font:600 20px/1.25 var(--display);margin:28px 0 6px}
+p{margin:0 0 16px}
+.lede::first-letter{font:900 72px/.8 var(--display);float:left;margin:6px 10px 0 0;color:var(--hot)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0 8px}
+.stats div{background:var(--card);padding:14px 12px}
+.stats b{display:block;font:900 clamp(28px,6vw,40px)/1 var(--display);color:var(--fg)}
+.stats b.h{color:var(--hot)}
+.stats span{font:400 12px/1.35 var(--mono);color:var(--muted);display:block;margin-top:6px}
+@media (max-width:600px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.figure{margin:26px 0 30px}
+.fig-h{font:600 19px/1.25 var(--display);margin:0 0 4px}
+.fig-sub{font:400 13px/1.45 var(--mono);color:var(--muted);margin:0 0 12px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+.chart{width:100%;position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--mono);fill:var(--fg)}
+.lab{font-size:12px}.lab.m{fill:var(--muted)}.lab.b{font-weight:500}.lab.s{font-size:11px}
+.tip{position:absolute;pointer-events:none;background:var(--fg);color:var(--bg);font:400 12px/1.45 var(--mono);padding:8px 10px;border-radius:3px;max-width:270px;z-index:1000;transform:translate(-50%,calc(-100% - 12px));display:none}
+.tip b{font-weight:500}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 10px}
+.btn{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:8px 10px;cursor:pointer;min-height:36px}
+.btn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn:focus-visible,input:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.seg .btn{border:0;border-radius:0;border-right:1px solid var(--border)}
+.seg .btn:last-child{border-right:0}
+input[type=search]{font:400 14px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:9px 10px;min-height:36px;flex:1 1 180px;min-width:0}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:820px){.mapgrid{grid-template-columns:1fr}}
+#map{height:clamp(440px,76vh,680px);border:1px solid var(--border);background:var(--sea);border-radius:2px;z-index:0}
+.legend{display:flex;gap:10px 14px;flex-wrap:wrap;font:400 12px/1.3 var(--mono);color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.side{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--hot);padding:12px 14px;font:400 13px/1.5 var(--mono)}
+.card.empty{border-left-color:var(--border);color:var(--muted)}
+.card b{font:600 18px/1.2 var(--display);display:block;margin-bottom:6px}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:6px 0 8px}
+.card dt{color:var(--muted)}.card dd{margin:0}
+.card q{display:block;font:italic 400 15px/1.45 var(--body);margin-top:6px;quotes:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chip{font:500 11px/1 var(--mono);padding:5px 7px;border-radius:2px;color:#fff}
+.pull{font:600 26px/1.25 var(--display);border-left:6px solid var(--hot);padding:4px 0 4px 18px;margin:30px 0}
+.note{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;font-size:16px;margin:22px 0}
+.note h3{margin-top:0}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;margin:14px 0}
+.quote{background:var(--card);border:1px solid var(--border);border-top:4px solid var(--hot);padding:12px 14px}
+.quote p{font:italic 400 16px/1.45 var(--body);margin:0 0 8px}
+.quote span{font:400 11.5px/1.4 var(--mono);color:var(--muted)}
+table.t{width:100%;border-collapse:collapse;font:400 13px/1.35 var(--mono)}
+table.t th{text-align:left;font-weight:500;color:var(--muted);border-bottom:2px solid var(--fg);padding:6px 8px 6px 0}
+table.t td{border-bottom:1px solid var(--rule);padding:7px 8px 7px 0;vertical-align:top}
+table.t td.num,table.t th.num{text-align:right}
+.tablewrap{overflow-x:auto}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--hot);border-color:var(--hot);color:#fff}
+footer{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer p{margin:0 0 10px}
+.theme{position:fixed;right:12px;bottom:12px;z-index:1001}
+.leaflet-container{font:400 12px/1.4 var(--mono);background:var(--sea)}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--card);color:var(--fg);border-radius:3px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.leaflet-popup-content{margin:10px 12px;font:400 12.5px/1.45 var(--mono)}
+.leaflet-popup-content b{font:600 15px/1.2 var(--display);display:block;margin-bottom:4px}
+.leaflet-container a.leaflet-popup-close-button{color:var(--muted)}
+.leaflet-control-attribution{background:color-mix(in srgb,var(--card) 85%,transparent)!important;color:var(--muted)!important;font-size:10px}
+.leaflet-control-attribution a{color:var(--fg)!important}
+.leaflet-popup-content a{color:var(--hot)}
+.leaflet-bar a{background:var(--card);color:var(--fg);border-bottom-color:var(--border)}
+.leaflet-bar a:hover{background:var(--panel)}
+.leaflet-bar{border:1px solid var(--border)!important}
+@media print{.theme,.controls{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="kicker"><b>Data study</b><span>Folk religion × landscape</span><span>Britain and Ireland</span></div>
+<header class="hero">
+  <h1>From saint to <em>wish</em></h1>
+  <svg class="mark" viewBox="-100 -100 200 200" aria-hidden="true"><g id="heroMark"></g></svg>
+  <p class="dek">The holy and wishing wells of Britain and Ireland. I mapped {{n_holy|int}} holy wells, read the saint and the language in their names, and counted the cures, rags and offerings recorded at Ireland's wells.</p>
+</header>
+<div class="byline">Dr Tristan Hotham, Independent researcher · October 2026 · Data: National Monuments Service (Ireland), OpenStreetMap, Wikidata</div>
+
+<p class="lede" style="margin-top:28px">Throw a coin into a well and make a wish. Most of us have done it, at a garden centre or a shopping arcade, without thinking about where the habit came from. For a thousand years and more, people in Britain and Ireland came to springs named for saints, walked rounds, prayed, drank, bathed sore eyes, and left something behind: a rag tied to a thorn tree, a pin, a medal, a coin. This page follows that thread with data, from the saint's well to the wishing well.</p>
+
+<div class="stats">
+  <div><b class="h">{{n_nms|int}}</b><span>holy wells in Ireland's official inventory (Republic of Ireland)</span></div>
+  <div><b>{{nations.0.per1000|f1}}</b><span>holy wells per 1,000 km² there; Northern Ireland's open data show {{nations.1.per1000|f1}}</span></div>
+  <div><b>{{roi_mary}} · {{roi_patrick}}</b><span>Irish wells read as Mary's and as Patrick's: a dead heat; Brigid has {{roi_brigid}}</span></div>
+  <div><b class="h">{{any_folk_share|pct0}}</b><span>of described Irish wells mention a cure, rags, offerings or a pattern, in the short text available</span></div>
+</div>
+<p class="src">All numbers are computed in the code that comes with this page; see Methods for how each was made and what it cannot tell you.</p>
+
+<h2><span class="n">01 · THE MAP</span>Every holy well I could find</h2>
+<p>Each dot is a well. In the Republic of Ireland the dots are the National Monuments Service's {{n_nms|int}} records of holy wells, the state's own inventory. In Northern Ireland, Britain and the Isle of Man they are wells that volunteers have mapped in OpenStreetMap or entered in Wikidata, filtered from {{osm_input|int}} loosely matching names down to {{n_holy_britain_ni_im|int}} holy wells and {{n_named_other|int}} other named wells. Colour the dots by saint, by the language of the name, or by what the Irish descriptions record. Tap a dot to read its record.</p>
+<div class="figure bleed">
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Colour the wells by">
+      <button class="btn" data-mode="saint" aria-pressed="true">Saint</button>
+      <button class="btn" data-mode="lang" aria-pressed="false">Language</button>
+      <button class="btn" data-mode="prac" aria-pressed="false">Folk practice</button>
+      <button class="btn" data-mode="src" aria-pressed="false">Source</button>
+    </div>
+    <button class="btn" id="bother" aria-pressed="true">Other named wells</button>
+    <input type="search" id="q" list="names" placeholder="Search a well, e.g. St Winefride's" aria-label="Search for a well by name">
+    <datalist id="names"></datalist>
+  </div>
+  <div class="mapgrid">
+    <div><div id="map" role="region" aria-label="Map of holy wells in Britain and Ireland"></div><div class="legend" id="legend"></div></div>
+    <div class="side">
+      <div class="card empty" id="card">Tap a dot, or search for a well, to read its record.</div>
+      <div class="note" style="margin:0;font-size:14px;line-height:1.5"><b style="font:600 16px/1.2 var(--display)">Read the map with care.</b> The Irish dots come from an official survey; the British ones from volunteers. Britain has far more holy wells than this map shows. Scotland's Canmore and Wales's Coflein records were not available to me.</div>
+    </div>
+  </div>
+</div>
+
+<h2><span class="n">02 · WHERE</span>Ireland's wells, and the limits of the map</h2>
+<p>The Republic of Ireland's inventory holds {{n_nms|int}} holy wells, {{nations.0.per1000|f1}} for every 1,000 km². {{roi_most}} has the most ({{roi_most_n}}); for its size, Dublin ({{roi_counties.0.per1000|f1}} per 1,000 km²), Kilkenny, Wexford and Clare are the densest counties, and Monaghan the sparsest ({{roi_bottom.2.per1000|f1}}).</p>
+<p>Across the border the picture collapses, and that is the first lesson of this project. Northern Ireland shows {{nations.1.per1000|f1}} wells per 1,000 km², about one sixteenth of the Republic's ({{ratio_roi_ni|x1}} times lower). The wells did not stop at the border; the record did. North of it I only have what volunteers have mapped. Even within OpenStreetMap alone, the Republic has {{ratio_osm_roi_ni|x1}} times Northern Ireland's density ({{nations.0.osm_holy_per1000|f1}} against {{nations.1.osm_holy_per1000|f1}}), which suggests that Irish mappers have used the official inventory; {{nms_share_in_osm|pct0}} of the inventory's wells have an OpenStreetMap well within 150 m.</p>
+<div class="figure">
+  <div class="fig-h">Holy wells per 1,000 km²</div>
+  <div class="fig-sub">Solid bar: the holy wells on this page. Ring: OpenStreetMap alone, the same source everywhere.</div>
+  <div class="chart" id="dens"></div>
+  <div class="src">Republic of Ireland: National Monuments Service inventory. Elsewhere: OpenStreetMap and Wikidata. Areas from ONS and Natural Earth boundaries.</div>
+</div>
+<p>So Britain's {{britain_holy|int}} wells ({{britain_per1000|f1}} per 1,000 km²) are a floor, not a count, and I do not compare them with Ireland as if they were. Within Britain, the open data still find the places you would expect: Cornwall has {{britain_top_counties.0.holy}} mapped holy wells, {{britain_top_counties.0.per1000|f1}} per 1,000 km², far ahead of any other county, and the north Welsh counties of Clwyd and Gwynedd follow.</p>
+<div class="figure">
+  <div class="fig-h">Irish counties by holy wells per 1,000 km²</div>
+  <div class="fig-sub">Republic of Ireland, National Monuments Service records, county as recorded.</div>
+  <div class="chart" id="ctyc"></div>
+</div>
+
+<h2><span class="n">03 · WHO</span>Mary, Patrick and Brigid</h2>
+<p>A well's name often says whose it is: St Patrick's Well, Toberbride, Ffynnon Fair, Lady Well. I read a saint only where the name says so plainly, in English ("St X's Well"), in Irish or Gaelic (Tobar Phádraig, Tobar Mhuire) or in Welsh (Ffynnon Fair is Mary's well, Ffynnon Ddewi David's). For a few anglicised Irish forms, such as Tobermurry and Toberaraght, I used them only because the inventory's own descriptions give the saint (Muire, St Attracta). Anything else I leave unread rather than guess.</p>
+<p>Of the Irish inventory's {{nms_named|int}} named wells, {{saints.Republic of Ireland.with_saint|int}} ({{roi_saint_share_named|pct0}}) name a saint, {{saints.Republic of Ireland.religious_no_saint|int}} are simply holy (Holy Well, Trinity Well, Sunday's Well) and {{saints.Republic of Ireland.unread|int}} ({{saints.Republic of Ireland.share_unread|pct0}}) I cannot read: Toberinneenboy, Tobergal and hundreds of other Tober names whose meaning I have not checked. Among the wells with a saint, Mary ({{roi_mary}}, {{roi_mary_share|pct0}}) and Patrick ({{roi_patrick}}, {{roi_patrick_share|pct0}}) are level, and Brigid is third ({{roi_brigid}}, {{roi_brigid_share|pct0}}). Then come John, Colmcille, Brendan and Ciarán, and a long tail of local founders: the {{saints.Republic of Ireland.distinct}} different names include Mac Duagh, Attracta, Gobnait and Moling.</p>
+<div class="figure">
+  <div class="fig-h">Whose well? The most common saints</div>
+  <div class="fig-sub">Share of wells with a saint read from the name. Choose a country.</div>
+  <div class="controls"><div class="seg" role="group" aria-label="Country">
+    <button class="btn" data-sg="Republic of Ireland" aria-pressed="true">Rep. of Ireland</button>
+    <button class="btn" data-sg="Northern Ireland" aria-pressed="false">N. Ireland</button>
+    <button class="btn" data-sg="Wales" aria-pressed="false">Wales</button>
+    <button class="btn" data-sg="England" aria-pressed="false">England</button>
+    <button class="btn" data-sg="Scotland" aria-pressed="false">Scotland</button>
+  </div></div>
+  <div class="chart" id="saints"></div>
+  <div class="src" id="saintnote"></div>
+</div>
+<p>In Britain, Mary leads in England ({{saints.England.top.0.n}} of {{saints.England.with_saint}}), Wales ({{saints.Wales.top.0.n}} of {{saints.Wales.with_saint}}) and Scotland ({{saints.Scotland.top.0.n}} of {{saints.Scotland.with_saint}}). Below her the lists turn local: Helen and Anne in England, Cybi, Teilo, Winifred and Beuno in Wales, Ninian and Kentigern in Scotland. Patrick leads in Northern Ireland, with {{saints.Northern Ireland.top.0.n}} of the {{saints.Northern Ireland.with_saint}} wells there that name a saint.</p>
+<div class="note">
+  <h3>Why Brigid's share differs from my earlier map</h3>
+  <p style="margin:0">In <a href="https://tristan-hotham.github.io/saints-and-wells/">my earlier map of saints and holy wells across Western Europe</a>, Brigid held {{companion.brigid_share|pct1}} of named Irish holy wells. That figure came from the {{companion.wd_ie_wells|int}} Irish holy wells in Wikidata, of which {{companion.wd_ie_identified}} had a dedication read from their labels. Here I use the full official inventory of {{n_nms|int}}, its Ordnance Survey names, and a reader that also takes Irish forms such as Tobermurry and Toberpatrick. Brigid's count is about the same ({{roi_brigid}} here against {{companion.brigid_n}} there), but Mary's and Patrick's are far higher ({{roi_mary}} against {{companion.mary_n}}, {{roi_patrick}} against {{companion.patrick_n}}), so Brigid's share falls. The two lists label the wells differently and cover different wells. The two figures measure different lists, and I trust this one more for Ireland because it is the complete inventory.</p>
+</div>
+
+<h2><span class="n">04 · LANGUAGE</span>Well, tobar, ffynnon</h2>
+<p>The word for well carries its own map. In the Republic, {{roi_irish_share|pct0}} of named holy wells have Irish-language names, almost all in the anglicised spellings of the nineteenth-century Ordnance Survey (Toberbride, Tubbrid, Tobermore), and {{roi_english_share|pct0}} have English names (St Brigid's Well, Lady Well). The saints mostly travel in English: of the Irish wells whose name gives a saint, {{roi_saint_irish_form_share|pct0}} have an Irish form. In Wales {{wales_welsh_share|pct0}} of mapped named wells are a Ffynnon; in Scotland {{scot_gaelic_share|pct0}} carry a Gaelic Tobar or Fuaran. I found no Manx Chibbyr and only one Cornish Venton among the mapped wells, a gap in the open data rather than in the languages.</p>
+<div class="figure">
+  <div class="fig-h">The language of the word for well</div>
+  <div class="fig-sub">Share of named wells in each country by the language of the generic word. Republic: inventory holy wells; elsewhere: all named wells kept by the filter.</div>
+  <div class="chart" id="lang"></div>
+</div>
+
+<h2><span class="n">05 · FROM SAINT TO WISH</span>Cures, rags, coins and rounds</h2>
+<p>A saint's well was used. People came on the saint's day for the pattern, walked rounds, said prayers at stations, took water for a cure, and left tokens. The Irish inventory's descriptions record some of this. I searched them for words that mark each practice, ignoring mentions that are negated ("no votive offerings", "no devotions now"), and counted the wells that mention each one.</p>
+<p>Two cautions. First, {{nms_placeholder|int}} records carry only a placeholder, so I count {{nms_described|int}} described wells. Second, the open dataset carries only the first {{notes_max_chars}} characters of each description, and {{notes_at_limit_share|pct0}} of descriptions reach that limit. Many practices are mentioned further on in the full text. Every share below is therefore a floor.</p>
+<div class="figure">
+  <div class="fig-h">What the Irish descriptions mention</div>
+  <div class="fig-sub">Share of the {{nms_described|int}} described holy wells whose first {{notes_max_chars}} characters mention each thing. Tap a bar for examples.</div>
+  <div class="chart" id="prac"></div>
+  <div id="pracq" class="quotes"></div>
+  <div class="src">Quotations: National Monuments Service, Sites and Monuments Record descriptions (CC BY 4.0), shortened.</div>
+</div>
+<p>Even in those short openings, {{any_folk_share|pct0}} of described wells mention a cure, rags, offerings or a pattern. Patterns, pilgrimages, rounds and stations are the most common ({{practices.pattern.share|pct0}}). Cures come next ({{practices.cure.share|pct1}}), and the eyes are the commonest ailment: {{practices.eyes.n}} descriptions mention eyes, often in the name itself, Tobar na Súl, the well of the eyes. Rags appear at {{practices.rags.n}} wells ({{practices.rags.share|pct1}}) and offerings or votive objects at {{practices.offerings.n}} ({{practices.offerings.share|pct1}}), among them {{practices.coins.n}} with coins. One in five descriptions ({{practices.lost.share|pct0}}) records a well that is dry, lost or known only as a site.</p>
+<p class="pull">Coins dropped into the water, a tree with coins pressed into its bark: the wishing well's habit is already there at the saint's well.</p>
+<p>Wells that name a saint are about as likely to have recorded practices as those that do not ({{folk_given_saint|pct0}} against {{folk_given_nosaint|pct0}}), so the rituals belonged to the holy well as a type, whoever its saint.</p>
+<h3>The wishing well</h3>
+<p>And the wishing well itself? In the open map data the name is rare and mostly modern. Of {{wishing_raw}} OpenStreetMap features called "Wishing Well" in Britain, Ireland and the Isle of Man, {{wishing_raw_cat.well}} passed my filter as real wells or springs; {{wishing_raw_cat.pub, cafe or restaurant}} are pubs, cafes or restaurants, {{wishing_raw_cat.nursery, childcare or care}} nurseries or care services, and {{wishing_raw_cat.hotel, cottage or holiday let}} hotels, cottages or holiday lets. Names with rags, pins, eyes or warts are rarer still: {{folk_names.rag or clootie.n}} rag wells, {{folk_names.eye.n}} eye wells, {{folk_names.wart.n}} wart wells and {{folk_names.pin.n}} pin well. The folk practice survives better in the descriptions of Irish holy wells than in the names on the map.</p>
+<div class="figure">
+  <div class="fig-h">What is called "Wishing Well"?</div>
+  <div class="fig-sub">The {{wishing_raw}} OpenStreetMap features named "Wishing Well", by what they are.</div>
+  <div class="chart" id="wish"></div>
+</div>
+
+<h2><span class="n">06 · CHURCHES</span>Next door to the church</h2>
+<p>Holy wells sit close to churches. I measured the distance from each well to the nearest church building in Wikidata ({{n_churches|int}} churches in Britain and Ireland) and compared it with {{n_random|int}} random points spread across the same country.</p>
+<p>In the Republic, {{churches.Republic of Ireland.within_500|pct0}} of holy wells are within 500 m of a church in Wikidata, against {{churches.Republic of Ireland.random_within_500|pct1}} of random points: {{churches.Republic of Ireland.ratio_500|x1}} times more often. In Britain, {{churches.Britain.within_500|pct0}} of the mapped holy wells are, against {{churches.Britain.random_within_500|pct1}} of random points. And the saints match. Where a well names a saint and there is a church with a saint's name within 2 km, they share the saint {{same_saint.Republic of Ireland.same_saint|pct0}} of the time in the Republic and {{same_saint.Britain.same_saint|pct0}} in Britain, against {{same_saint.Republic of Ireland.shuffled_mean|pct0}} and {{same_saint.Britain.shuffled_mean|pct0}} when I shuffle the wells' saints.</p>
+<div class="figure">
+  <div class="fig-h">Within 500 m of a church</div>
+  <div class="fig-sub">Holy wells, other named wells and random points within 500 m of a church building in Wikidata.</div>
+  <div class="chart" id="church"></div>
+  <div class="src">Wikidata's church coverage is better in Britain than in Ireland, where many medieval church sites are not in Wikidata; compare bars within a country, not across.</div>
+</div>
+<p>The British figure is high partly because volunteers map the wells they can find, and wells beside churches are easy to find. Even so, other named wells in Britain, the farm wells and village springs, are less often near a church ({{churches.Britain.other_within_500|pct0}}). The holy well was part of the parish landscape, not apart from it.</p>
+
+<h2><span class="n">07 · METHODS</span>How I did this, and what it cannot tell you</h2>
+<h3>Data</h3>
+<p><b>Republic of Ireland.</b> The National Monuments Service's Sites and Monuments Record, every record classed "Ritual site, holy well" ({{n_nms|int}} records), with county, townland, coordinates, the names shown on the Ordnance Survey maps, and the opening of the archaeological description. This is an official inventory and the best source here.</p>
+<p><b>OpenStreetMap.</b> {{osm_input|int}} features in the United Kingdom, Ireland and the Isle of Man whose name loosely matched a well word. Most are not wells (Wellington Road, Bridewell, Powell, spas, pubs and care homes), so I filtered them in steps, shown in the table. In the Republic, OpenStreetMap wells within 150 m of an inventory well were treated as the same well ({{osm_ie_matched|int}} features); the {{osm_extra_ie}} that were not are kept in the data file but not counted, so that the Republic's figures rest on the inventory alone.</p>
+<p><b>Wikidata.</b> Items that are holy wells, {{wd.unique_items}} of them in the study area; {{wd.added}} were not already within 150 m of a well from the other sources and were added.</p>
+<div class="tablewrap"><table class="t" id="steps"></table></div>
+<h3>Reading names</h3>
+<p>A well counts as holy outside the Republic if its name gives a saint or says holy (Holy Well, Trinity, Lady Well), or if OpenStreetMap tags it as religious or a holy well, or Wikidata lists it as one. The language is read from the generic word only: well; ffynnon; tobar, tober, tubber or tubbrid; fuaran; chibbyr; venton. Saints are read as described above, from a fixed table of name forms; a name after "St" that is not in the table counts as its own saint, as written.</p>
+<h3>Practices</h3>
+<p>Each practice is a set of words searched in the description (for example rag, rags, rag tree, cloth, ribbons; or coins, pins, medals, rosaries, votive, offerings). A mention that follows "no", "not" or "without" within a few words is ignored. I checked the matches by reading samples, some of which are quoted above. The full word lists are in the code.</p>
+<h3>Caveats</h3>
+<p>Recorded is not surviving: the inventory includes wells that are dry or lost, and the map shows neither all wells that once existed nor only those that do now. The comparison between Ireland and Britain mixes an official survey with volunteer mapping, so the gap between them says more about records than about the Reformation or belief, and I do not read it as a measure of either. The descriptions are cut at {{notes_max_chars}} characters, so practice shares are lower bounds. Wikidata's churches are uneven by country. Name readings miss saints hidden in unfamiliar Irish forms, and a few may be wrong.</p>
+
+<h2><span class="n">08 · SOURCES</span>Data, code and licences</h2>
+<div class="cta">
+  <a class="p" href="https://blog.tristanhotham.com/2026/10/27/holy-wells/">Read the blog post</a>
+  <a href="https://doi.org/10.5281/zenodo.23688019">Paper and archived data</a>
+  <a href="https://github.com/Tristan-Hotham/holy-wells">Data and code</a>
+  <a href="https://blog.tristanhotham.com/">More history data posts</a>
+</div>
+<p>Companion: <a href="https://tristan-hotham.github.io/saints-and-wells/">my earlier map of saints and holy wells across Western Europe</a>, which looks at church dedications from Wikidata.</p>
+
+<footer>
+  <p>Dr Tristan Hotham, researcher on social media, campaigns and politics. Independent researcher. Cite as: Hotham, T. (2026) From Saint to Wish: mapping the holy and wishing wells of Britain and Ireland. Zenodo. <a href="https://doi.org/10.5281/zenodo.23688019">https://doi.org/10.5281/zenodo.23688019</a></p>
+  <p>Irish holy wells: National Monuments Service, Department of Housing, Local Government and Heritage, Sites and Monuments Record (Archaeological Survey of Ireland), via the National Monuments Service Holy Wells open data service, CC BY 4.0. Wells in Britain, Northern Ireland and the Isle of Man: © OpenStreetMap contributors, ODbL. Wikidata (holy wells and churches): CC0. Boundaries: Office for National Statistics, contains OS data © Crown copyright and database right, Open Government Licence v3; Natural Earth (public domain). Base map tiles © Esri. Map library: Leaflet.</p>
+  <p>Derived data are released under the ODbL where they include OpenStreetMap data, and otherwise under CC BY 4.0; the page text is CC BY 4.0; code is MIT.</p>
+  <p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+</footer>
+</div>
+<div class="tip" id="tip"></div>
+<button class="btn theme" id="theme" aria-label="Toggle dark mode">◐</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/*DATA*/
+const NS = "http://www.w3.org/2000/svg";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const el = (t, a = {}, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+const fmt = n => Math.round(n).toLocaleString("en-GB");
+const pc = (x, d = 0) => (x * 100).toFixed(d) + "%";
+const tip = document.getElementById("tip");
+function showTip(h, x, y) { tip.innerHTML = h; tip.style.display = "block"; const w = tip.offsetWidth; x = Math.max(w / 2 + 8, Math.min(innerWidth - w / 2 - 8, x)); tip.style.left = x + scrollX + "px"; tip.style.top = y + scrollY + "px"; }
+function hideTip() { tip.style.display = "none"; }
+function hover(node, h) { node.style.cursor = "pointer"; node.setAttribute("tabindex", "0"); const s = () => { const r = node.getBoundingClientRect(); showTip(h, r.left + r.width / 2, r.top); }; node.addEventListener("pointerenter", s); node.addEventListener("focus", s); node.addEventListener("pointerleave", hideTip); node.addEventListener("blur", hideTip); node.addEventListener("click", e => { e.stopPropagation(); s(); }); }
+document.addEventListener("click", hideTip);
+const redraws = [];
+function resp(box, render) { let last = 0; const go = (force) => { const w = Math.max(280, Math.round(box.clientWidth)); if (!force && Math.abs(w - last) < 4) return; last = w; box.innerHTML = ""; render(w, w < 560); }; new ResizeObserver(() => go()).observe(box); redraws.push(() => go(true)); go(); }
+const lbl = (svg, x, y, s, cls = "lab", anchor = "start") => { const t = el("text", { x, y, class: cls, "text-anchor": anchor }, svg); t.textContent = s; return t; };
+const R = D.R;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+document.getElementById("theme").onclick = () => { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.dataset.theme = dark ? "light" : "dark"; redraws.forEach(f => f()); window.__restyle && window.__restyle(); };
+const isDark = () => { const r = document.documentElement; return r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
+
+/* hero mark: a stone well head, ripples and a falling coin */
+(() => { const g = document.getElementById("heroMark");
+  el("ellipse", { cx: 0, cy: 40, rx: 78, ry: 26, fill: "var(--fg)", opacity: .1 }, g);
+  [62, 48, 34, 20].forEach((r, i) => el("ellipse", { cx: 0, cy: 40, rx: r, ry: r * .32, fill: "none", stroke: "var(--hot)", "stroke-width": 2.6 - i * .4, opacity: .35 + i * .18 }, g));
+  el("path", { d: "M-70 40 L-70 10 A70 22 0 0 1 70 10 L70 40", fill: "none", stroke: "var(--fg)", "stroke-width": 3 }, g);
+  for (let k = -3; k <= 3; k++) el("line", { x1: k * 20, y1: 8 - (k === 0 ? 0 : 0), x2: k * 20, y2: 40, stroke: "var(--fg)", "stroke-width": 1.4, opacity: .5 }, g);
+  el("circle", { cx: 0, cy: -58, r: 11, fill: "var(--gold)", stroke: "var(--fg)", "stroke-width": 2 }, g);
+  el("line", { x1: 0, y1: -40, x2: 0, y2: 18, stroke: "var(--gold)", "stroke-width": 2, "stroke-dasharray": "3 5" }, g);
+  el("path", { d: "M-46 -40 l10 -34 M-46 -40 l-6 -30", stroke: "var(--rag)", "stroke-width": 4, "stroke-linecap": "round" }, g);
+})();
+
+/* ===== data ===== */
+const W = D.w.map(r => ({ lat: r[0], lon: r[1], name: r[2], src: ["NMS", "OpenStreetMap", "Wikidata"][r[3]], holy: !!r[4], saint: r[5], lang: D.langs[r[6]], folk: r[7], unit: D.units[r[8]], p: r[9], id: r[10], notes: r[11] }));
+const SAINTCOL = { Brigid: "--rag", Patrick: "--pat", Mary: "--mary", Colmcille: "--col", Ciaran: "--gold" };
+const NONS = new Set(["Holy (no saint named)", "Trinity", "Christ", "Sunday", "All Saints"]);
+const LANGCOL = { "English": "--mary", "Irish (anglicised)": "--pat", "Irish (Gaelic spelling)": "--moss", "Welsh": "--rag", "Scottish Gaelic": "--col", "Cornish": "--gold", "Manx": "--hot", "other": "--other", "unnamed": "--none" };
+const PK = D.pk, PLAB = { cure: "Cure", rags: "Rags", offerings: "Offerings", pattern: "Pattern or rounds", still: "Still visited" };
+const saintName = k => k === "Ciaran" ? "Ciarán" : k;
+
+/* ===== map ===== */
+(() => {
+  const card = document.getElementById("card");
+  if (!window.L) { document.getElementById("map").innerHTML = '<p style="padding:16px;font:400 13px/1.5 var(--mono)">The map library did not load. The charts below still work.</p>'; return; }
+  let mode = "saint", other = true;
+  const map = L.map("map", { preferCanvas: true, scrollWheelZoom: false, zoomSnap: .25, minZoom: 4, maxZoom: 16 }).fitBounds([[50.0, -10.6], [58.8, 1.8]]);
+  map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+  map.on("focus", () => map.scrollWheelZoom.enable()); map.on("blur", () => map.scrollWheelZoom.disable());
+  const tileUrl = () => `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/${isDark() ? "World_Dark_Gray_Base" : "World_Light_Gray_Base"}/MapServer/tile/{z}/{y}/{x}`;
+  const tiles = L.tileLayer(tileUrl(), { maxZoom: 16, attribution: 'Tiles &copy; Esri · Wells: National Monuments Service (CC BY 4.0), &copy; OpenStreetMap contributors (ODbL), Wikidata' }).addTo(map);
+  const C = {}; const col = v => C[v] || (C[v] = css(v));
+  const rdr = L.canvas({ padding: .3, tolerance: 5 });
+  function colour(w) {
+    if (!w.holy) return col("--dot");
+    if (mode === "saint") { if (!w.saint) return col("--none"); if (NONS.has(w.saint)) return col("--hot"); return col(SAINTCOL[w.saint] || "--moss"); }
+    if (mode === "lang") return col(LANGCOL[w.lang] || "--other");
+    if (mode === "src") return col(w.src === "NMS" ? "--hot" : w.src === "Wikidata" ? "--gold" : "--col");
+    if (mode === "prac") { if (w.src !== "NMS") return col("--none"); if (w.p & 2 || w.p & 4) return col("--rag"); if (w.p & 1) return col("--mary"); if (w.p & 8) return col("--pat"); if (w.p & 16) return col("--gold"); return col("--none"); }
+  }
+  const marks = W.map(w => { const m = L.circleMarker([w.lat, w.lon], { renderer: rdr, radius: 3.6, weight: .6, fillOpacity: .9 }); m.on("click", () => select(w, m)); m.addTo(map); return m; });
+  function style() { W.forEach((w, i) => { const show = w.holy || other; const c = colour(w); marks[i].setStyle({ fillColor: c, color: col("--bg"), fillOpacity: show ? (w.holy ? .9 : .55) : 0, opacity: show ? 1 : 0, radius: w.holy ? 3.6 : 2.6, interactive: show }); }); legend(); }
+  function legend() {
+    const sw = (v, t) => `<span><i style="background:var(${v})"></i>${t}</span>`; let L2 = [];
+    if (mode === "saint") L2 = [sw("--mary", "Mary"), sw("--pat", "Patrick"), sw("--rag", "Brigid"), sw("--col", "Colmcille"), sw("--gold", "Ciarán"), sw("--moss", "Other saint"), sw("--hot", "Holy, no saint named"), sw("--none", "Saint not read")];
+    if (mode === "lang") L2 = Object.entries(LANGCOL).filter(([k]) => k !== "unnamed").map(([k, v]) => sw(v, k)).concat([sw("--none", "Unnamed")]);
+    if (mode === "src") L2 = [sw("--hot", "National Monuments Service"), sw("--col", "OpenStreetMap"), sw("--gold", "Wikidata")];
+    if (mode === "prac") L2 = [sw("--rag", "Rags or offerings"), sw("--mary", "A cure"), sw("--pat", "Pattern or rounds"), sw("--gold", "Still visited"), sw("--none", "None mentioned, or not an Irish record")];
+    if (other) L2.push(sw("--dot", "Other named well"));
+    document.getElementById("legend").innerHTML = L2.join("");
+  }
+  function info(w) {
+    const pr = PK.filter((k, i) => w.p & (1 << i)).map(k => PLAB[k]);
+    const link = w.src === "NMS" ? `https://maps.archaeology.ie/HistoricEnvironment/?SMRS=${encodeURIComponent(w.id)}` : w.src === "Wikidata" ? `https://www.wikidata.org/wiki/${w.id}` : `https://www.openstreetmap.org/${w.id}`;
+    return `<b>${esc(w.name || "Unnamed holy well")}</b><dl><dt>Where</dt><dd>${esc(w.unit)}</dd><dt>Saint</dt><dd>${w.saint ? esc(saintName(w.saint)) : "not read"}</dd><dt>Language</dt><dd>${esc(w.lang)}</dd>` +
+      (w.folk ? `<dt>Name type</dt><dd>${esc(w.folk)} well</dd>` : "") + (pr.length ? `<dt>Recorded</dt><dd>${pr.join(", ")}</dd>` : "") + `<dt>Source</dt><dd>${esc(w.src)}${w.holy ? "" : " (not counted as holy)"}</dd></dl>` +
+      (w.notes ? `<q>${esc(w.notes)}${w.notes.length >= 250 ? " ..." : ""}</q>` : "") + `<div style="margin-top:8px"><a href="${link}" target="_blank" rel="noopener">${w.src === "NMS" ? "Record " + esc(w.id) : "Source record"}</a></div>`;
+  }
+  function select(w, m) { card.className = "card"; card.innerHTML = info(w); L.popup({ maxWidth: 240, autoPanPadding: [20, 20] }).setLatLng([w.lat, w.lon]).setContent(`<b>${esc(w.name || "Unnamed holy well")}</b>${esc(w.unit)}${w.saint ? "<br>" + esc(saintName(w.saint)) : ""}`).openOn(map); }
+  document.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { mode = b.dataset.mode; document.querySelectorAll("[data-mode]").forEach(x => x.setAttribute("aria-pressed", x === b)); style(); });
+  const bo = document.getElementById("bother"); bo.onclick = () => { other = !other; bo.setAttribute("aria-pressed", other); style(); };
+  const dl = document.getElementById("names"); [...new Set(W.filter(w => w.name && w.holy).map(w => w.name))].sort().forEach(n => { const o = document.createElement("option"); o.value = n; dl.appendChild(o); });
+  const q = document.getElementById("q");
+  q.addEventListener("change", () => { const v = q.value.trim().toLowerCase(); if (!v) return; const i = W.findIndex(w => (w.name || "").toLowerCase() === v); const j = i >= 0 ? i : W.findIndex(w => (w.name || "").toLowerCase().includes(v)); if (j >= 0) { map.flyTo([W[j].lat, W[j].lon], 12, { duration: reduce ? 0 : .8 }); select(W[j], marks[j]); } });
+  window.__restyle = () => { for (const k in C) delete C[k]; tiles.setUrl(tileUrl()); style(); };
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", window.__restyle);
+  style();
+})();
+
+/* ===== density by nation ===== */
+resp(document.getElementById("dens"), (W0, nar) => {
+  const rows = R.nations, rowH = 38, m = { l: nar ? 128 : 170, r: 64, t: 6, b: 30 }, H = rows.length * rowH + m.t + m.b;
+  const svg = el("svg", { viewBox: `0 0 ${W0} ${H}`, role: "img", "aria-label": "Holy wells per 1,000 square kilometres by country" }, document.getElementById("dens"));
+  const max = 50, X = v => m.l + v / max * (W0 - m.l - m.r);
+  [0, 10, 20, 30, 40, 50].forEach(t => { el("line", { x1: X(t), x2: X(t), y1: m.t, y2: H - m.b, stroke: "var(--rule)" }, svg); lbl(svg, X(t), H - m.b + 16, t, "lab m s", "middle"); });
+  rows.forEach((r, i) => { const y = m.t + i * rowH;
+    lbl(svg, m.l - 10, y + 22, nar ? r.label.replace("Republic of Ireland", "Rep. of Ireland") : r.label, "lab", "end");
+    const b = el("rect", { x: m.l, y: y + 8, width: Math.max(2, X(r.per1000) - m.l), height: rowH - 16, fill: r.nation === "Ireland" ? "var(--hot)" : "var(--col)", opacity: .9 }, svg);
+    hover(b, `<b>${r.label}</b><br>${fmt(r.holy)} holy wells, ${r.per1000.toFixed(1)} per 1,000 km²<br>Source: ${r.source}<br>OpenStreetMap alone: ${fmt(r.osm_holy)} (${r.osm_holy_per1000.toFixed(1)})`);
+    el("circle", { cx: X(r.osm_holy_per1000), cy: y + rowH / 2, r: 6, fill: "none", stroke: "var(--fg)", "stroke-width": 2 }, svg);
+    lbl(svg, Math.max(X(r.per1000), X(r.osm_holy_per1000) + 6) + 6, y + 23, r.per1000.toFixed(1), "lab b s"); });
+});
+
+/* ===== Irish counties ===== */
+resp(document.getElementById("ctyc"), (W0, nar) => {
+  const rows = R.roi_counties, rowH = 21, m = { l: nar ? 112 : 130, r: 92, t: 4, b: 26 }, H = rows.length * rowH + m.t + m.b;
+  const svg = el("svg", { viewBox: `0 0 ${W0} ${H}`, role: "img", "aria-label": "Irish counties by holy wells per 1,000 square kilometres" }, document.getElementById("ctyc"));
+  const max = Math.ceil(Math.max(...rows.map(r => r.per1000)) / 20) * 20, X = v => m.l + v / max * (W0 - m.l - m.r);
+  for (let t = 0; t <= max; t += nar ? 40 : 20) { el("line", { x1: X(t), x2: X(t), y1: m.t, y2: H - m.b, stroke: "var(--rule)" }, svg); lbl(svg, X(t), H - m.b + 15, t, "lab m s", "middle"); }
+  rows.forEach((r, i) => { const y = m.t + i * rowH; lbl(svg, m.l - 8, y + 15, r.unit, "lab s", "end");
+    const b = el("rect", { x: m.l, y: y + 4, width: Math.max(1, X(r.per1000) - m.l), height: rowH - 7, fill: "var(--hot)", opacity: .85 }, svg);
+    hover(b, `<b>${r.unit}</b><br>${fmt(r.holy)} holy wells<br>${r.per1000.toFixed(1)} per 1,000 km²`);
+    lbl(svg, X(r.per1000) + 6, y + 15, `${r.per1000.toFixed(1)} (${r.holy})`, "lab m s"); });
+});
+
+/* ===== saints ===== */
+(() => { let g = "Republic of Ireland"; const box = document.getElementById("saints"), note = document.getElementById("saintnote");
+  document.querySelectorAll("[data-sg]").forEach(b => b.onclick = () => { g = b.dataset.sg; document.querySelectorAll("[data-sg]").forEach(x => x.setAttribute("aria-pressed", x === b)); box.innerHTML = ""; draw(box.clientWidth, box.clientWidth < 560); });
+  function draw(W0, nar) {
+    const s = R.saints[g], rows = s.top.slice(0, 10), rowH = 28, m = { l: nar ? 98 : 120, r: 70, t: 4, b: 8 }, H = rows.length * rowH + m.t + m.b;
+    const svg = el("svg", { viewBox: `0 0 ${W0} ${H}`, role: "img", "aria-label": "Most common saints at holy wells" }, box);
+    const max = Math.max(...rows.map(r => r.share)), X = v => m.l + v / max * (W0 - m.l - m.r);
+    rows.forEach((r, i) => { const y = m.t + i * rowH; lbl(svg, m.l - 8, y + 18, saintName(r.key), "lab", "end");
+      const b = el("rect", { x: m.l, y: y + 5, width: Math.max(2, X(r.share) - m.l), height: rowH - 10, fill: `var(${SAINTCOL[r.key] || "--moss"})`, opacity: .9 }, svg);
+      hover(b, `<b>${saintName(r.key)}</b><br>${r.n} wells, ${pc(r.share, 1)} of wells with a saint read`);
+      lbl(svg, X(r.share) + 6, y + 18, `${r.n} · ${pc(r.share)}`, "lab m s"); });
+    note.textContent = `${g}: ${fmt(s.n)} holy wells, ${fmt(s.named)} named; ${fmt(s.with_saint)} name a saint (${s.distinct} different names), ${fmt(s.religious_no_saint)} are holy with no saint, ${fmt(s.unread)} (${pc(s.share_unread)}) are not read.`;
+  }
+  resp(box, draw);
+})();
+
+/* ===== language ===== */
+resp(document.getElementById("lang"), (W0, nar) => {
+  const order = ["Ireland", "Northern Ireland", "Wales", "England", "Scotland", "Isle of Man"], NL = { Ireland: "Rep. of Ireland", "Northern Ireland": "N. Ireland", Wales: "Wales", England: "England", Scotland: "Scotland", "Isle of Man": "Isle of Man" };
+  const LG = ["English", "Irish (anglicised)", "Irish (Gaelic spelling)", "Welsh", "Scottish Gaelic", "Cornish", "Manx", "other"];
+  const rowH = 34, m = { l: nar ? 122 : 130, r: 10, t: 4, b: nar ? 96 : 56 }, H = order.length * rowH + m.t + m.b;
+  const svg = el("svg", { viewBox: `0 0 ${W0} ${H}`, role: "img", "aria-label": "Language of well names by country" }, document.getElementById("lang"));
+  const X = v => m.l + v * (W0 - m.l - m.r);
+  order.forEach((n, i) => { const L0 = R.languages[n], y = m.t + i * rowH; let acc = 0; lbl(svg, m.l - 8, y + 21, NL[n], "lab", "end");
+    LG.forEach(k => { const v = L0.counts[k] / Math.max(1, L0.n); if (!v) return; const b = el("rect", { x: X(acc), y: y + 6, width: Math.max(.5, X(acc + v) - X(acc)), height: rowH - 12, fill: `var(${LANGCOL[k]})`, opacity: .9 }, svg);
+      hover(b, `<b>${NL[n]}: ${k}</b><br>${L0.counts[k]} of ${L0.n} named wells (${pc(v)})`); if (X(acc + v) - X(acc) > 38) lbl(svg, X(acc) + 5, y + 21, pc(v), "lab s").setAttribute("style", "fill:#fff"); acc += v; }); });
+  let x = 0, y = H - m.b + 18; LG.forEach(k => { const w = k.length * 6.6 + 26; if (x + w > W0) { x = 0; y += 18; } el("rect", { x, y: y - 9, width: 10, height: 10, fill: `var(${LANGCOL[k]})` }, svg); lbl(svg, x + 14, y, k, "lab s"); x += w; });
+});
+
+/* ===== practices ===== */
+(() => { const box = document.getElementById("prac"), qbox = document.getElementById("pracq");
+  const keys = ["pattern", "cure", "eyes", "offerings", "rags", "coins", "still", "tree", "statue", "church", "lost"];
+  const colr = { pattern: "--pat", cure: "--mary", eyes: "--mary", offerings: "--gold", rags: "--rag", coins: "--gold", still: "--hot", tree: "--moss", statue: "--col", church: "--other", lost: "--none" };
+  function quotes(k) { const ex = R.practice_examples.filter(e => e.practice === k); qbox.innerHTML = ex.map(e => `<div class="quote" style="border-top-color:var(${colr[k]})"><p>${esc(e.snippet)}</p><span>${esc(e.name || "Unnamed holy well")}, Co. ${esc(e.county)} · <a href="${esc(e.url.trim())}" target="_blank" rel="noopener">${esc(e.smr)}</a></span></div>`).join(""); }
+  resp(box, (W0, nar) => {
+    const rowH = 30, m = { l: nar ? 120 : 290, r: nar ? 96 : 80, t: 4, b: 6 }, H = keys.length * rowH + m.t + m.b;
+    const svg = el("svg", { viewBox: `0 0 ${W0} ${H}`, role: "img", "aria-label": "Share of described Irish holy wells mentioning each practice" }, box);
+    const max = Math.max(...keys.map(k => R.practices[k].share)), X = v => m.l + v / max * (W0 - m.l - m.r);
+    const short = { pattern: "Pattern, rounds", cure: "A cure", eyes: "Eyes", offerings: "Offerings", rags: "Rags or cloth", coins: "Coins", still: "Still visited", tree: "A tree", statue: "Statue or shrine", church: "Church nearby", lost: "Dry or lost" };
+    keys.forEach((k, i) => { const p = R.practices[k], y = m.t + i * rowH; lbl(svg, m.l - 8, y + 19, nar ? short[k] : p.label, "lab s", "end");
+      const b = el("rect", { x: m.l, y: y + 6, width: Math.max(2, X(p.share) - m.l), height: rowH - 12, fill: `var(${colr[k]})`, opacity: .9 }, svg);
+      hover(b, `<b>${p.label}</b><br>${p.n} of ${fmt(R.nms_described)} described wells (${pc(p.share, 1)})`); b.addEventListener("click", () => quotes(k));
+      lbl(svg, X(p.share) + 6, y + 19, `${pc(p.share, 1)} · ${p.n}`, "lab m s"); });
+  });
+  quotes("rags");
+})();
+
+/* ===== wishing ===== */
+resp(document.getElementById("wish"), (W0, nar) => {
+  const c = R.wishing_raw_cat, rows = [["well", "A well or spring", "--hot"], ["pub, cafe or restaurant", "Pub, cafe or restaurant", "--rag"], ["nursery, childcare or care", "Nursery or care", "--gold"], ["hotel, cottage or holiday let", "Hotel or cottage", "--col"], ["other or unclear", "Other or unclear", "--none"]];
+  const H = 70, svg = el("svg", { viewBox: `0 0 ${W0} ${H}`, role: "img", "aria-label": "What features named Wishing Well are" }, document.getElementById("wish"));
+  const tot = R.wishing_raw, X = v => v / tot * W0; let acc = 0;
+  rows.forEach(([k, lab, colv]) => { const v = c[k] || 0; const b = el("rect", { x: X(acc), y: 0, width: X(v) - 1, height: 34, fill: `var(${colv})`, opacity: .9 }, svg); hover(b, `<b>${lab}</b><br>${v} of ${tot}`); if (X(v) > 26) lbl(svg, X(acc) + 5, 22, v, "lab b").setAttribute("style", "fill:#fff"); acc += v; });
+  let x = 0, y = 54; rows.forEach(([k, lab, colv]) => { const w = lab.length * 6.6 + 26; if (x + w > W0) { x = 0; y += 16; } el("rect", { x, y: y - 9, width: 10, height: 10, fill: `var(${colv})` }, svg); lbl(svg, x + 14, y, lab, "lab s"); x += w; });
+  svg.setAttribute("viewBox", `0 0 ${W0} ${y + 6}`);
+});
+
+/* ===== churches ===== */
+resp(document.getElementById("church"), (W0, nar) => {
+  const G = [["Republic of Ireland", "Rep. of Ireland"], ["Britain", "Britain"]];
+  const rows = []; G.forEach(([g, gl]) => { const c = R.churches[g]; rows.push([gl, "Holy wells", c.within_500, "--hot", c.n]); if (c.other_within_500 != null) rows.push([gl, "Other named wells", c.other_within_500, "--dot", c.other_n]); rows.push([gl, "Random points", c.random_within_500, "--none", R.n_random]); });
+  const rowH = 28, m = { l: nar ? 150 : 250, r: 56, t: 4, b: 6 }, H = rows.length * rowH + m.t + m.b + 12;
+  const svg = el("svg", { viewBox: `0 0 ${W0} ${H}`, role: "img", "aria-label": "Share within 500 metres of a church" }, document.getElementById("church"));
+  const X = v => m.l + v / .7 * (W0 - m.l - m.r); let y = m.t, prev = null;
+  rows.forEach(r => { if (prev && prev !== r[0]) y += 12; prev = r[0]; lbl(svg, m.l - 8, y + 18, `${r[0]}: ${r[1]}`, "lab s", "end");
+    const b = el("rect", { x: m.l, y: y + 5, width: Math.max(2, X(r[2]) - m.l), height: rowH - 10, fill: `var(${r[3]})`, opacity: .9 }, svg);
+    hover(b, `<b>${r[0]}, ${r[1].toLowerCase()}</b><br>${pc(r[2], 1)} within 500 m of a church (${fmt(r[4])})`); lbl(svg, X(r[2]) + 6, y + 18, pc(r[2]), "lab m s"); y += rowH; });
+});
+
+/* ===== filter table ===== */
+(() => { const t = document.getElementById("steps"); let prev = null;
+  t.innerHTML = `<thead><tr><th>OpenStreetMap filter step</th><th class="num">Kept</th><th class="num">Dropped</th></tr></thead><tbody>` + R.osm_steps.map(s => { const d = prev == null ? "" : fmt(prev - s.n); prev = s.n; return `<tr><td>${esc(s.step)}</td><td class="num">${fmt(s.n)}</td><td class="num">${d}</td></tr>`; }).join("") + "</tbody>";
+})();
+</script>
+</body>
+</html>
