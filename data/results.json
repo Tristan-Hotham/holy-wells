@@ -1,0 +1,3593 @@
+{
+ "n_nms": 3025,
+ "n_holy": 3440,
+ "n_holy_britain_ni_im": 415,
+ "n_named_other": 1107,
+ "n_rows": 4704,
+ "osm_steps": [
+  {
+   "step": "All OSM features with a loose well-like name (input extract)",
+   "n": 66517
+  },
+  {
+   "step": "Name has a well word (well, wells, ffynnon, tobar, tober, tubber, fuaran, chibbyr, venton, clootie) as a word, which drops Wellington, Bridewell, Powell, Maxwell, Cromwell, Boswell, spa and spring names",
+   "n": 11299
+  },
+  {
+   "step": "Not a road, building, business, organisation or settlement by name; topographic words (hill, green, head ...) drop a name only when it does not end in the well word (word lists in code)",
+   "n": 4875
+  },
+  {
+   "step": "Tags not those of a different kind of feature (natural only spring, water or wetland; man_made only water_well; amenity only place_of_worship, drinking_water, fountain or watering_place)",
+   "n": 4613
+  },
+  {
+   "step": "Evidence it is a well: tagged as a spring or well, or as religious, or historic and named as a well, or (if untagged in the extract) named as a saint's, holy or folk well in two or more words; untagged one-word names (Holywell, Ladywell) and untagged Tober and Tobar names are dropped because most are places or townlands",
+   "n": 2816
+  },
+  {
+   "step": "After removing OSM duplicates (same name within 150 m)",
+   "n": 2717
+  },
+  {
+   "step": "Inside the study area (land of Britain, Ireland and the Isle of Man, within about 3 km of the coast)",
+   "n": 2702
+  },
+  {
+   "step": "After removing OSM features within 150 m of an NMS holy well",
+   "n": 1565
+  }
+ ],
+ "osm_input": 66517,
+ "osm_kept_before_nms": 2702,
+ "osm_final": 1565,
+ "osm_why": {
+  "tagged water or religious feature": 2465,
+  "historic or heritage feature named as a well": 154,
+  "untagged here but named as a saint's, holy or folk well": 197
+ },
+ "wd": {
+  "input": 1373,
+  "in_study_area": 1133,
+  "unique_items": 897,
+  "matched": {
+   "NMS": 695,
+   "OSM": 88
+  },
+  "added": 114
+ },
+ "osm_ie": 1544,
+ "osm_ie_matched": 1137,
+ "nms_matched_by_osm": 1098,
+ "nms_share_in_osm": 0.362975,
+ "osm_extra_ie": 407,
+ "wd_extra_ie": 52,
+ "by_src_holy": {
+  "NMS": 3025,
+  "OSM": 353,
+  "Wikidata": 62
+ },
+ "nations": [
+  {
+   "nation": "Ireland",
+   "label": "Republic of Ireland",
+   "km2": 69445,
+   "holy": 3025,
+   "per1000": 43.559526,
+   "source": "NMS inventory",
+   "osm_holy": 958,
+   "osm_holy_per1000": 13.79505,
+   "all_named": 3432,
+   "osm_all": 1544,
+   "osm_all_per1000": 22.233358
+  },
+  {
+   "nation": "Northern Ireland",
+   "label": "Northern Ireland",
+   "km2": 14251,
+   "holy": 39,
+   "per1000": 2.736592,
+   "source": "OpenStreetMap and Wikidata",
+   "osm_holy": 36,
+   "osm_holy_per1000": 2.526085,
+   "all_named": 57,
+   "osm_all": 56,
+   "osm_all_per1000": 3.929466
+  },
+  {
+   "nation": "Wales",
+   "label": "Wales",
+   "km2": 20790,
+   "holy": 66,
+   "per1000": 3.174573,
+   "source": "OpenStreetMap and Wikidata",
+   "osm_holy": 45,
+   "osm_holy_per1000": 2.164481,
+   "all_named": 154,
+   "osm_all": 137,
+   "osm_all_per1000": 6.589643
+  },
+  {
+   "nation": "England",
+   "label": "England",
+   "km2": 130543,
+   "holy": 242,
+   "per1000": 1.853794,
+   "source": "OpenStreetMap and Wikidata",
+   "osm_holy": 196,
+   "osm_holy_per1000": 1.50142,
+   "all_named": 762,
+   "osm_all": 719,
+   "osm_all_per1000": 5.50776
+  },
+  {
+   "nation": "Scotland",
+   "label": "Scotland",
+   "km2": 78717,
+   "holy": 65,
+   "per1000": 0.825741,
+   "source": "OpenStreetMap and Wikidata",
+   "osm_holy": 64,
+   "osm_holy_per1000": 0.813037,
+   "all_named": 243,
+   "osm_all": 242,
+   "osm_all_per1000": 3.074296
+  },
+  {
+   "nation": "Isle of Man",
+   "label": "Isle of Man",
+   "km2": 577,
+   "holy": 3,
+   "per1000": 5.196605,
+   "source": "OpenStreetMap and Wikidata",
+   "osm_holy": 3,
+   "osm_holy_per1000": 5.196605,
+   "all_named": 4,
+   "osm_all": 4,
+   "osm_all_per1000": 6.928807
+  }
+ ],
+ "ratio_roi_ni": 15.917433,
+ "ratio_osm_roi_ni": 5.461039,
+ "ratio_roi_nms_vs_osm": 3.15762,
+ "britain_holy": 373,
+ "britain_km2": 230050,
+ "britain_per1000": 1.621387,
+ "ratio_roi_britain": 26.8656,
+ "roi_counties": [
+  {
+   "unit": "Dublin",
+   "nation": "Ireland",
+   "km2": 911.5,
+   "holy": 110,
+   "per1000": 120.7
+  },
+  {
+   "unit": "Kilkenny",
+   "nation": "Ireland",
+   "km2": 2054.8,
+   "holy": 156,
+   "per1000": 75.9
+  },
+  {
+   "unit": "Wexford",
+   "nation": "Ireland",
+   "km2": 2338.4,
+   "holy": 176,
+   "per1000": 75.3
+  },
+  {
+   "unit": "Clare",
+   "nation": "Ireland",
+   "km2": 3236.1,
+   "holy": 241,
+   "per1000": 74.5
+  },
+  {
+   "unit": "Louth",
+   "nation": "Ireland",
+   "km2": 787.1,
+   "holy": 51,
+   "per1000": 64.8
+  },
+  {
+   "unit": "Sligo",
+   "nation": "Ireland",
+   "km2": 1834.0,
+   "holy": 117,
+   "per1000": 63.8
+  },
+  {
+   "unit": "Limerick",
+   "nation": "Ireland",
+   "km2": 2717.5,
+   "holy": 159,
+   "per1000": 58.5
+  },
+  {
+   "unit": "Wicklow",
+   "nation": "Ireland",
+   "km2": 1983.0,
+   "holy": 114,
+   "per1000": 57.5
+  },
+  {
+   "unit": "Galway",
+   "nation": "Ireland",
+   "km2": 6084.0,
+   "holy": 319,
+   "per1000": 52.4
+  },
+  {
+   "unit": "Carlow",
+   "nation": "Ireland",
+   "km2": 906.9,
+   "holy": 47,
+   "per1000": 51.8
+  },
+  {
+   "unit": "Cork",
+   "nation": "Ireland",
+   "km2": 7258.1,
+   "holy": 358,
+   "per1000": 49.3
+  },
+  {
+   "unit": "Waterford",
+   "nation": "Ireland",
+   "km2": 1836.5,
+   "holy": 79,
+   "per1000": 43.0
+  },
+  {
+   "unit": "Westmeath",
+   "nation": "Ireland",
+   "km2": 1862.1,
+   "holy": 72,
+   "per1000": 38.7
+  },
+  {
+   "unit": "Kerry",
+   "nation": "Ireland",
+   "km2": 4798.8,
+   "holy": 183,
+   "per1000": 38.1
+  },
+  {
+   "unit": "Kildare",
+   "nation": "Ireland",
+   "km2": 1720.4,
+   "holy": 60,
+   "per1000": 34.9
+  },
+  {
+   "unit": "Donegal",
+   "nation": "Ireland",
+   "km2": 4790.9,
+   "holy": 165,
+   "per1000": 34.4
+  },
+  {
+   "unit": "Offaly",
+   "nation": "Ireland",
+   "km2": 2026.3,
+   "holy": 68,
+   "per1000": 33.6
+  },
+  {
+   "unit": "Roscommon",
+   "nation": "Ireland",
+   "km2": 2503.5,
+   "holy": 79,
+   "per1000": 31.6
+  },
+  {
+   "unit": "Laois",
+   "nation": "Ireland",
+   "km2": 1703.9,
+   "holy": 49,
+   "per1000": 28.8
+  },
+  {
+   "unit": "Tipperary South",
+   "nation": "Ireland",
+   "km2": 2122.6,
+   "holy": 61,
+   "per1000": 28.7
+  },
+  {
+   "unit": "Mayo",
+   "nation": "Ireland",
+   "km2": 5552.3,
+   "holy": 148,
+   "per1000": 26.7
+  },
+  {
+   "unit": "Leitrim",
+   "nation": "Ireland",
+   "km2": 1617.8,
+   "holy": 42,
+   "per1000": 26.0
+  },
+  {
+   "unit": "Longford",
+   "nation": "Ireland",
+   "km2": 1110.1,
+   "holy": 27,
+   "per1000": 24.3
+  },
+  {
+   "unit": "Meath",
+   "nation": "Ireland",
+   "km2": 2344.7,
+   "holy": 54,
+   "per1000": 23.0
+  },
+  {
+   "unit": "Tipperary North",
+   "nation": "Ireland",
+   "km2": 2177.6,
+   "holy": 45,
+   "per1000": 20.7
+  },
+  {
+   "unit": "Cavan",
+   "nation": "Ireland",
+   "km2": 1892.1,
+   "holy": 37,
+   "per1000": 19.6
+  },
+  {
+   "unit": "Monaghan",
+   "nation": "Ireland",
+   "km2": 1274.2,
+   "holy": 8,
+   "per1000": 6.3
+  }
+ ],
+ "roi_top": [
+  {
+   "unit": "Dublin",
+   "nation": "Ireland",
+   "km2": 911.5,
+   "holy": 110,
+   "per1000": 120.7
+  },
+  {
+   "unit": "Kilkenny",
+   "nation": "Ireland",
+   "km2": 2054.8,
+   "holy": 156,
+   "per1000": 75.9
+  },
+  {
+   "unit": "Wexford",
+   "nation": "Ireland",
+   "km2": 2338.4,
+   "holy": 176,
+   "per1000": 75.3
+  },
+  {
+   "unit": "Clare",
+   "nation": "Ireland",
+   "km2": 3236.1,
+   "holy": 241,
+   "per1000": 74.5
+  },
+  {
+   "unit": "Louth",
+   "nation": "Ireland",
+   "km2": 787.1,
+   "holy": 51,
+   "per1000": 64.8
+  }
+ ],
+ "roi_bottom": [
+  {
+   "unit": "Tipperary North",
+   "nation": "Ireland",
+   "km2": 2177.6,
+   "holy": 45,
+   "per1000": 20.7
+  },
+  {
+   "unit": "Cavan",
+   "nation": "Ireland",
+   "km2": 1892.1,
+   "holy": 37,
+   "per1000": 19.6
+  },
+  {
+   "unit": "Monaghan",
+   "nation": "Ireland",
+   "km2": 1274.2,
+   "holy": 8,
+   "per1000": 6.3
+  }
+ ],
+ "britain_top_counties": [
+  {
+   "unit": "Cornwall",
+   "nation": "England",
+   "holy": 57,
+   "per1000": 16.0
+  },
+  {
+   "unit": "South Glamorgan",
+   "nation": "Wales",
+   "holy": 4,
+   "per1000": 8.4
+  },
+  {
+   "unit": "Clwyd",
+   "nation": "Wales",
+   "holy": 20,
+   "per1000": 6.9
+  },
+  {
+   "unit": "Merseyside",
+   "nation": "England",
+   "holy": 4,
+   "per1000": 6.2
+  },
+  {
+   "unit": "Gwynedd",
+   "nation": "Wales",
+   "holy": 20,
+   "per1000": 6.1
+  },
+  {
+   "unit": "East Riding of Yorkshire",
+   "nation": "England",
+   "holy": 10,
+   "per1000": 4.0
+  },
+  {
+   "unit": "South Yorkshire",
+   "nation": "England",
+   "holy": 6,
+   "per1000": 3.9
+  },
+  {
+   "unit": "West Yorkshire",
+   "nation": "England",
+   "holy": 7,
+   "per1000": 3.4
+  }
+ ],
+ "britain_top_counts": [
+  {
+   "unit": "Cornwall",
+   "holy": 57
+  },
+  {
+   "unit": "Clwyd",
+   "holy": 20
+  },
+  {
+   "unit": "Gwynedd",
+   "holy": 20
+  },
+  {
+   "unit": "Devon",
+   "holy": 18
+  },
+  {
+   "unit": "North Yorkshire",
+   "holy": 16
+  },
+  {
+   "unit": "Dyfed",
+   "holy": 12
+  },
+  {
+   "unit": "Aberdeenshire",
+   "holy": 12
+  },
+  {
+   "unit": "Cumbria",
+   "holy": 12
+  }
+ ],
+ "roi_most": "Cork",
+ "roi_most_n": 358,
+ "saints": {
+  "Republic of Ireland": {
+   "n": 3025,
+   "named": 2142,
+   "with_saint": 1007,
+   "religious_no_saint": 245,
+   "unread": 890,
+   "share_saint": 0.470121,
+   "share_unread": 0.4155,
+   "top": [
+    {
+     "key": "Mary",
+     "n": 162,
+     "share": 0.160874
+    },
+    {
+     "key": "Patrick",
+     "n": 161,
+     "share": 0.159881
+    },
+    {
+     "key": "Brigid",
+     "n": 113,
+     "share": 0.112214
+    },
+    {
+     "key": "John",
+     "n": 35,
+     "share": 0.034757
+    },
+    {
+     "key": "Colmcille",
+     "n": 35,
+     "share": 0.034757
+    },
+    {
+     "key": "Brendan",
+     "n": 26,
+     "share": 0.025819
+    },
+    {
+     "key": "Ciaran",
+     "n": 24,
+     "share": 0.023833
+    },
+    {
+     "key": "Mac Duagh",
+     "n": 23,
+     "share": 0.02284
+    },
+    {
+     "key": "Michael",
+     "n": 18,
+     "share": 0.017875
+    },
+    {
+     "key": "Catherine",
+     "n": 18,
+     "share": 0.017875
+    },
+    {
+     "key": "Senan",
+     "n": 17,
+     "share": 0.016882
+    },
+    {
+     "key": "James",
+     "n": 15,
+     "share": 0.014896
+    }
+   ],
+   "distinct": 189,
+   "how": {
+    "gaelic": 230,
+    "st": 666,
+    "mary": 111
+   },
+   "holy_no_saint": 159
+  },
+  "Northern Ireland": {
+   "n": 39,
+   "named": 39,
+   "with_saint": 28,
+   "religious_no_saint": 7,
+   "unread": 4,
+   "share_saint": 0.717949,
+   "share_unread": 0.102564,
+   "top": [
+    {
+     "key": "Patrick",
+     "n": 7,
+     "share": 0.25
+    },
+    {
+     "key": "Mary",
+     "n": 3,
+     "share": 0.107143
+    },
+    {
+     "key": "Laserian",
+     "n": 2,
+     "share": 0.071429
+    },
+    {
+     "key": "Bronagh",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Anne",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Lassers",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Malachy",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Brigid",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Cooey",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Aidan",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Lowry",
+     "n": 1,
+     "share": 0.035714
+    },
+    {
+     "key": "Tierney",
+     "n": 1,
+     "share": 0.035714
+    }
+   ],
+   "distinct": 19,
+   "how": {
+    "st": 26,
+    "mary": 2
+   },
+   "holy_no_saint": 5
+  },
+  "Wales": {
+   "n": 66,
+   "named": 66,
+   "with_saint": 49,
+   "religious_no_saint": 3,
+   "unread": 14,
+   "share_saint": 0.742424,
+   "share_unread": 0.212121,
+   "top": [
+    {
+     "key": "Mary",
+     "n": 12,
+     "share": 0.244898
+    },
+    {
+     "key": "Cybi",
+     "n": 3,
+     "share": 0.061224
+    },
+    {
+     "key": "Teilo",
+     "n": 2,
+     "share": 0.040816
+    },
+    {
+     "key": "Winifred",
+     "n": 2,
+     "share": 0.040816
+    },
+    {
+     "key": "Beuno",
+     "n": 2,
+     "share": 0.040816
+    },
+    {
+     "key": "Helen",
+     "n": 2,
+     "share": 0.040816
+    },
+    {
+     "key": "Peter",
+     "n": 2,
+     "share": 0.040816
+    },
+    {
+     "key": "Michael",
+     "n": 2,
+     "share": 0.040816
+    },
+    {
+     "key": "Tecla",
+     "n": 1,
+     "share": 0.020408
+    },
+    {
+     "key": "John",
+     "n": 1,
+     "share": 0.020408
+    },
+    {
+     "key": "Melangells",
+     "n": 1,
+     "share": 0.020408
+    },
+    {
+     "key": "Non",
+     "n": 1,
+     "share": 0.020408
+    }
+   ],
+   "distinct": 30,
+   "how": {
+    "st": 29,
+    "welsh": 20
+   },
+   "holy_no_saint": 2
+  },
+  "England": {
+   "n": 242,
+   "named": 242,
+   "with_saint": 167,
+   "religious_no_saint": 59,
+   "unread": 16,
+   "share_saint": 0.690083,
+   "share_unread": 0.066116,
+   "top": [
+    {
+     "key": "Mary",
+     "n": 33,
+     "share": 0.197605
+    },
+    {
+     "key": "Helen",
+     "n": 12,
+     "share": 0.071856
+    },
+    {
+     "key": "Anne",
+     "n": 12,
+     "share": 0.071856
+    },
+    {
+     "key": "John",
+     "n": 8,
+     "share": 0.047904
+    },
+    {
+     "key": "Catherine",
+     "n": 4,
+     "share": 0.023952
+    },
+    {
+     "key": "Cuthbert",
+     "n": 4,
+     "share": 0.023952
+    },
+    {
+     "key": "James",
+     "n": 4,
+     "share": 0.023952
+    },
+    {
+     "key": "Peter",
+     "n": 3,
+     "share": 0.017964
+    },
+    {
+     "key": "Patrick",
+     "n": 3,
+     "share": 0.017964
+    },
+    {
+     "key": "Margaret",
+     "n": 3,
+     "share": 0.017964
+    },
+    {
+     "key": "Cuby",
+     "n": 2,
+     "share": 0.011976
+    },
+    {
+     "key": "Edward",
+     "n": 2,
+     "share": 0.011976
+    }
+   ],
+   "distinct": 78,
+   "how": {
+    "st": 145,
+    "mary": 22
+   },
+   "holy_no_saint": 56
+  },
+  "Scotland": {
+   "n": 65,
+   "named": 65,
+   "with_saint": 63,
+   "religious_no_saint": 1,
+   "unread": 1,
+   "share_saint": 0.969231,
+   "share_unread": 0.015385,
+   "top": [
+    {
+     "key": "Mary",
+     "n": 14,
+     "share": 0.222222
+    },
+    {
+     "key": "John",
+     "n": 5,
+     "share": 0.079365
+    },
+    {
+     "key": "Ninian",
+     "n": 4,
+     "share": 0.063492
+    },
+    {
+     "key": "Michael",
+     "n": 3,
+     "share": 0.047619
+    },
+    {
+     "key": "Margaret",
+     "n": 3,
+     "share": 0.047619
+    },
+    {
+     "key": "Kentigern",
+     "n": 2,
+     "share": 0.031746
+    },
+    {
+     "key": "Anthony",
+     "n": 2,
+     "share": 0.031746
+    },
+    {
+     "key": "Brigid",
+     "n": 2,
+     "share": 0.031746
+    },
+    {
+     "key": "Ciaran",
+     "n": 2,
+     "share": 0.031746
+    },
+    {
+     "key": "Colme",
+     "n": 1,
+     "share": 0.015873
+    },
+    {
+     "key": "Clements",
+     "n": 1,
+     "share": 0.015873
+    },
+    {
+     "key": "Erchard",
+     "n": 1,
+     "share": 0.015873
+    }
+   ],
+   "distinct": 35,
+   "how": {
+    "st": 54,
+    "mary": 9
+   },
+   "holy_no_saint": 1
+  }
+ },
+ "nms_named": 2142,
+ "nms_unnamed": 883,
+ "roi_brigid": 113,
+ "roi_patrick": 161,
+ "roi_mary": 162,
+ "roi_saint_from_gaelic": 263,
+ "notes_dedication_extra": 92,
+ "notes_dedication_extra_top": [
+  [
+   "Brigid",
+   15
+  ],
+  [
+   "Patrick",
+   14
+  ],
+  [
+   "Mary",
+   4
+  ],
+  [
+   "Brendan",
+   3
+  ],
+  [
+   "Kevin",
+   3
+  ]
+ ],
+ "roi_name_or_notes_saint": 1099,
+ "roi_name_or_notes_top": [
+  {
+   "key": "Patrick",
+   "n": 175,
+   "share": 0.159236
+  },
+  {
+   "key": "Mary",
+   "n": 166,
+   "share": 0.151046
+  },
+  {
+   "key": "Brigid",
+   "n": 128,
+   "share": 0.11647
+  },
+  {
+   "key": "John",
+   "n": 37,
+   "share": 0.033667
+  },
+  {
+   "key": "Colmcille",
+   "n": 36,
+   "share": 0.032757
+  },
+  {
+   "key": "Brendan",
+   "n": 29,
+   "share": 0.026388
+  },
+  {
+   "key": "Ciaran",
+   "n": 25,
+   "share": 0.022748
+  },
+  {
+   "key": "Mac Duagh",
+   "n": 23,
+   "share": 0.020928
+  }
+ ],
+ "languages": {
+  "Ireland": {
+   "n": 2142,
+   "counts": {
+    "English": 1139,
+    "Irish (anglicised)": 916,
+    "Irish (Gaelic spelling)": 39,
+    "Welsh": 0,
+    "Scottish Gaelic": 0,
+    "Cornish": 0,
+    "Manx": 0,
+    "other": 48
+   }
+  },
+  "Northern Ireland": {
+   "n": 57,
+   "counts": {
+    "English": 53,
+    "Irish (anglicised)": 4,
+    "Irish (Gaelic spelling)": 0,
+    "Welsh": 0,
+    "Scottish Gaelic": 0,
+    "Cornish": 0,
+    "Manx": 0,
+    "other": 0
+   }
+  },
+  "Wales": {
+   "n": 154,
+   "counts": {
+    "English": 57,
+    "Irish (anglicised)": 0,
+    "Irish (Gaelic spelling)": 0,
+    "Welsh": 97,
+    "Scottish Gaelic": 0,
+    "Cornish": 0,
+    "Manx": 0,
+    "other": 0
+   }
+  },
+  "England": {
+   "n": 762,
+   "counts": {
+    "English": 760,
+    "Irish (anglicised)": 0,
+    "Irish (Gaelic spelling)": 0,
+    "Welsh": 0,
+    "Scottish Gaelic": 0,
+    "Cornish": 1,
+    "Manx": 0,
+    "other": 1
+   }
+  },
+  "Scotland": {
+   "n": 243,
+   "counts": {
+    "English": 208,
+    "Irish (anglicised)": 0,
+    "Irish (Gaelic spelling)": 0,
+    "Welsh": 0,
+    "Scottish Gaelic": 35,
+    "Cornish": 0,
+    "Manx": 0,
+    "other": 0
+   }
+  },
+  "Isle of Man": {
+   "n": 4,
+   "counts": {
+    "English": 4,
+    "Irish (anglicised)": 0,
+    "Irish (Gaelic spelling)": 0,
+    "Welsh": 0,
+    "Scottish Gaelic": 0,
+    "Cornish": 0,
+    "Manx": 0,
+    "other": 0
+   }
+  }
+ },
+ "roi_irish_share": 0.445845,
+ "roi_english_share": 0.531746,
+ "wales_welsh_share": 0.62987,
+ "scot_gaelic_share": 0.144033,
+ "ni_irish_share": 0.070175,
+ "roi_saint_english_form": 769,
+ "roi_saint_irish_form": 233,
+ "folk_names": {
+  "wishing": {
+   "n": 38,
+   "by_nation": {
+    "Isle of Man": 1,
+    "England": 28,
+    "Wales": 1,
+    "Scotland": 3,
+    "Ireland": 3,
+    "Northern Ireland": 2
+   },
+   "examples": [
+    "5 Wishing Well",
+    "East Kilbride Rotary Wishing Well",
+    "Ederney Wishing Well",
+    "Lucky Wishing Well",
+    "St Mary's Wishing Well",
+    "The Magic Wishing Well",
+    "The Wishing Well",
+    "Torquay Wishing Well"
+   ]
+  },
+  "rag or clootie": {
+   "n": 4,
+   "by_nation": {
+    "Ireland": 3,
+    "Northern Ireland": 1
+   },
+   "examples": [
+    "Cranfield Holy Well and rag trees",
+    "Rag Well"
+   ]
+  },
+  "pin": {
+   "n": 1,
+   "by_nation": {
+    "England": 1
+   },
+   "examples": [
+    "Pin Well"
+   ]
+  },
+  "cursing": {
+   "n": 0,
+   "by_nation": {},
+   "examples": []
+  },
+  "eye": {
+   "n": 5,
+   "by_nation": {
+    "Ireland": 2,
+    "England": 3
+   },
+   "examples": [
+    "Eye Well",
+    "Eye Wells or Tobernasool",
+    "Sore Eye Well",
+    "The Eye Well"
+   ]
+  },
+  "wart": {
+   "n": 3,
+   "by_nation": {
+    "Ireland": 2,
+    "Northern Ireland": 1
+   },
+   "examples": [
+    "Wart Well"
+   ]
+  },
+  "fever or ague": {
+   "n": 0,
+   "by_nation": {},
+   "examples": []
+  }
+ },
+ "folk_names_total": 51,
+ "wishing_holy": 1,
+ "n_named_pool": 3664,
+ "wishing_raw": 81,
+ "wishing_raw_cat": {
+  "other or unclear": 18,
+  "well": 38,
+  "pub, cafe or restaurant": 13,
+  "hotel, cottage or holiday let": 6,
+  "nursery, childcare or care": 6
+ },
+ "nms_described": 2628,
+ "nms_placeholder": 397,
+ "nms_blank": 0,
+ "notes_max_chars": 254,
+ "notes_at_limit": 2251,
+ "notes_at_limit_share": 0.856545,
+ "practices": {
+  "cure": {
+   "label": "A cure or healing",
+   "n": 139,
+   "share": 0.052892,
+   "by_county": {
+    "Clare": {
+     "n": 2,
+     "of": 76,
+     "share": 0.026316
+    },
+    "Kerry": {
+     "n": 13,
+     "of": 183,
+     "share": 0.071038
+    },
+    "Kilkenny": {
+     "n": 4,
+     "of": 88,
+     "share": 0.045455
+    },
+    "Limerick": {
+     "n": 14,
+     "of": 159,
+     "share": 0.08805
+    },
+    "Galway": {
+     "n": 5,
+     "of": 274,
+     "share": 0.018248
+    },
+    "Kildare": {
+     "n": 9,
+     "of": 60,
+     "share": 0.15
+    },
+    "Cork": {
+     "n": 30,
+     "of": 356,
+     "share": 0.08427
+    },
+    "Mayo": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 14,
+     "of": 110,
+     "share": 0.127273
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 9,
+     "of": 162,
+     "share": 0.055556
+    },
+    "Laois": {
+     "n": 2,
+     "of": 49,
+     "share": 0.040816
+    },
+    "Leitrim": {
+     "n": 2,
+     "of": 42,
+     "share": 0.047619
+    },
+    "Louth": {
+     "n": 2,
+     "of": 47,
+     "share": 0.042553
+    },
+    "Longford": {
+     "n": 0,
+     "of": 27,
+     "share": 0.0
+    },
+    "Meath": {
+     "n": 1,
+     "of": 33,
+     "share": 0.030303
+    },
+    "Monaghan": {
+     "n": 1,
+     "of": 8,
+     "share": 0.125
+    },
+    "Offaly": {
+     "n": 3,
+     "of": 68,
+     "share": 0.044118
+    },
+    "Roscommon": {
+     "n": 7,
+     "of": 79,
+     "share": 0.088608
+    },
+    "Sligo": {
+     "n": 1,
+     "of": 113,
+     "share": 0.00885
+    },
+    "Tipperary North": {
+     "n": 3,
+     "of": 45,
+     "share": 0.066667
+    },
+    "Tipperary South": {
+     "n": 0,
+     "of": 61,
+     "share": 0.0
+    },
+    "Wicklow": {
+     "n": 8,
+     "of": 114,
+     "share": 0.070175
+    },
+    "Waterford": {
+     "n": 4,
+     "of": 79,
+     "share": 0.050633
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 5,
+     "of": 176,
+     "share": 0.028409
+    }
+   }
+  },
+  "eyes": {
+   "label": "Eyes (a cure, or a well of the eyes)",
+   "n": 52,
+   "share": 0.019787,
+   "by_county": {
+    "Clare": {
+     "n": 1,
+     "of": 76,
+     "share": 0.013158
+    },
+    "Kerry": {
+     "n": 4,
+     "of": 183,
+     "share": 0.021858
+    },
+    "Kilkenny": {
+     "n": 3,
+     "of": 88,
+     "share": 0.034091
+    },
+    "Limerick": {
+     "n": 5,
+     "of": 159,
+     "share": 0.031447
+    },
+    "Galway": {
+     "n": 1,
+     "of": 274,
+     "share": 0.00365
+    },
+    "Kildare": {
+     "n": 3,
+     "of": 60,
+     "share": 0.05
+    },
+    "Cork": {
+     "n": 10,
+     "of": 356,
+     "share": 0.02809
+    },
+    "Mayo": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 9,
+     "of": 110,
+     "share": 0.081818
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 3,
+     "of": 162,
+     "share": 0.018519
+    },
+    "Laois": {
+     "n": 0,
+     "of": 49,
+     "share": 0.0
+    },
+    "Leitrim": {
+     "n": 0,
+     "of": 42,
+     "share": 0.0
+    },
+    "Louth": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Longford": {
+     "n": 0,
+     "of": 27,
+     "share": 0.0
+    },
+    "Meath": {
+     "n": 0,
+     "of": 33,
+     "share": 0.0
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 3,
+     "of": 68,
+     "share": 0.044118
+    },
+    "Roscommon": {
+     "n": 2,
+     "of": 79,
+     "share": 0.025316
+    },
+    "Sligo": {
+     "n": 1,
+     "of": 113,
+     "share": 0.00885
+    },
+    "Tipperary North": {
+     "n": 1,
+     "of": 45,
+     "share": 0.022222
+    },
+    "Tipperary South": {
+     "n": 0,
+     "of": 61,
+     "share": 0.0
+    },
+    "Wicklow": {
+     "n": 0,
+     "of": 114,
+     "share": 0.0
+    },
+    "Waterford": {
+     "n": 1,
+     "of": 79,
+     "share": 0.012658
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 5,
+     "of": 176,
+     "share": 0.028409
+    }
+   }
+  },
+  "warts": {
+   "label": "Warts (cure)",
+   "n": 10,
+   "share": 0.003805,
+   "by_county": {
+    "Clare": {
+     "n": 0,
+     "of": 76,
+     "share": 0.0
+    },
+    "Kerry": {
+     "n": 0,
+     "of": 183,
+     "share": 0.0
+    },
+    "Kilkenny": {
+     "n": 0,
+     "of": 88,
+     "share": 0.0
+    },
+    "Limerick": {
+     "n": 0,
+     "of": 159,
+     "share": 0.0
+    },
+    "Galway": {
+     "n": 0,
+     "of": 274,
+     "share": 0.0
+    },
+    "Kildare": {
+     "n": 0,
+     "of": 60,
+     "share": 0.0
+    },
+    "Cork": {
+     "n": 6,
+     "of": 356,
+     "share": 0.016854
+    },
+    "Mayo": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 0,
+     "of": 110,
+     "share": 0.0
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 0,
+     "of": 162,
+     "share": 0.0
+    },
+    "Laois": {
+     "n": 0,
+     "of": 49,
+     "share": 0.0
+    },
+    "Leitrim": {
+     "n": 1,
+     "of": 42,
+     "share": 0.02381
+    },
+    "Louth": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Longford": {
+     "n": 0,
+     "of": 27,
+     "share": 0.0
+    },
+    "Meath": {
+     "n": 0,
+     "of": 33,
+     "share": 0.0
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Roscommon": {
+     "n": 1,
+     "of": 79,
+     "share": 0.012658
+    },
+    "Sligo": {
+     "n": 0,
+     "of": 113,
+     "share": 0.0
+    },
+    "Tipperary North": {
+     "n": 1,
+     "of": 45,
+     "share": 0.022222
+    },
+    "Tipperary South": {
+     "n": 0,
+     "of": 61,
+     "share": 0.0
+    },
+    "Wicklow": {
+     "n": 1,
+     "of": 114,
+     "share": 0.008772
+    },
+    "Waterford": {
+     "n": 0,
+     "of": 79,
+     "share": 0.0
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 0,
+     "of": 176,
+     "share": 0.0
+    }
+   }
+  },
+  "head_teeth": {
+   "label": "Headache or toothache (cure)",
+   "n": 16,
+   "share": 0.006088,
+   "by_county": {
+    "Clare": {
+     "n": 0,
+     "of": 76,
+     "share": 0.0
+    },
+    "Kerry": {
+     "n": 1,
+     "of": 183,
+     "share": 0.005464
+    },
+    "Kilkenny": {
+     "n": 0,
+     "of": 88,
+     "share": 0.0
+    },
+    "Limerick": {
+     "n": 1,
+     "of": 159,
+     "share": 0.006289
+    },
+    "Galway": {
+     "n": 0,
+     "of": 274,
+     "share": 0.0
+    },
+    "Kildare": {
+     "n": 2,
+     "of": 60,
+     "share": 0.033333
+    },
+    "Cork": {
+     "n": 1,
+     "of": 356,
+     "share": 0.002809
+    },
+    "Mayo": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 2,
+     "of": 110,
+     "share": 0.018182
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 1,
+     "of": 162,
+     "share": 0.006173
+    },
+    "Laois": {
+     "n": 0,
+     "of": 49,
+     "share": 0.0
+    },
+    "Leitrim": {
+     "n": 1,
+     "of": 42,
+     "share": 0.02381
+    },
+    "Louth": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Longford": {
+     "n": 0,
+     "of": 27,
+     "share": 0.0
+    },
+    "Meath": {
+     "n": 1,
+     "of": 33,
+     "share": 0.030303
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Roscommon": {
+     "n": 1,
+     "of": 79,
+     "share": 0.012658
+    },
+    "Sligo": {
+     "n": 0,
+     "of": 113,
+     "share": 0.0
+    },
+    "Tipperary North": {
+     "n": 0,
+     "of": 45,
+     "share": 0.0
+    },
+    "Tipperary South": {
+     "n": 0,
+     "of": 61,
+     "share": 0.0
+    },
+    "Wicklow": {
+     "n": 3,
+     "of": 114,
+     "share": 0.026316
+    },
+    "Waterford": {
+     "n": 2,
+     "of": 79,
+     "share": 0.025316
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 0,
+     "of": 176,
+     "share": 0.0
+    }
+   }
+  },
+  "rags": {
+   "label": "Rags, cloth or a rag tree",
+   "n": 32,
+   "share": 0.012177,
+   "by_county": {
+    "Clare": {
+     "n": 0,
+     "of": 76,
+     "share": 0.0
+    },
+    "Kerry": {
+     "n": 1,
+     "of": 183,
+     "share": 0.005464
+    },
+    "Kilkenny": {
+     "n": 2,
+     "of": 88,
+     "share": 0.022727
+    },
+    "Limerick": {
+     "n": 5,
+     "of": 159,
+     "share": 0.031447
+    },
+    "Galway": {
+     "n": 1,
+     "of": 274,
+     "share": 0.00365
+    },
+    "Kildare": {
+     "n": 1,
+     "of": 60,
+     "share": 0.016667
+    },
+    "Cork": {
+     "n": 8,
+     "of": 356,
+     "share": 0.022472
+    },
+    "Mayo": {
+     "n": 2,
+     "of": 68,
+     "share": 0.029412
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 1,
+     "of": 110,
+     "share": 0.009091
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 2,
+     "of": 162,
+     "share": 0.012346
+    },
+    "Laois": {
+     "n": 0,
+     "of": 49,
+     "share": 0.0
+    },
+    "Leitrim": {
+     "n": 0,
+     "of": 42,
+     "share": 0.0
+    },
+    "Louth": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Longford": {
+     "n": 0,
+     "of": 27,
+     "share": 0.0
+    },
+    "Meath": {
+     "n": 0,
+     "of": 33,
+     "share": 0.0
+    },
+    "Monaghan": {
+     "n": 1,
+     "of": 8,
+     "share": 0.125
+    },
+    "Offaly": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Roscommon": {
+     "n": 2,
+     "of": 79,
+     "share": 0.025316
+    },
+    "Sligo": {
+     "n": 0,
+     "of": 113,
+     "share": 0.0
+    },
+    "Tipperary North": {
+     "n": 0,
+     "of": 45,
+     "share": 0.0
+    },
+    "Tipperary South": {
+     "n": 1,
+     "of": 61,
+     "share": 0.016393
+    },
+    "Wicklow": {
+     "n": 3,
+     "of": 114,
+     "share": 0.026316
+    },
+    "Waterford": {
+     "n": 0,
+     "of": 79,
+     "share": 0.0
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 2,
+     "of": 176,
+     "share": 0.011364
+    }
+   }
+  },
+  "offerings": {
+   "label": "Offerings or votive objects",
+   "n": 74,
+   "share": 0.028158,
+   "by_county": {
+    "Clare": {
+     "n": 2,
+     "of": 76,
+     "share": 0.026316
+    },
+    "Kerry": {
+     "n": 5,
+     "of": 183,
+     "share": 0.027322
+    },
+    "Kilkenny": {
+     "n": 0,
+     "of": 88,
+     "share": 0.0
+    },
+    "Limerick": {
+     "n": 4,
+     "of": 159,
+     "share": 0.025157
+    },
+    "Galway": {
+     "n": 12,
+     "of": 274,
+     "share": 0.043796
+    },
+    "Kildare": {
+     "n": 1,
+     "of": 60,
+     "share": 0.016667
+    },
+    "Cork": {
+     "n": 31,
+     "of": 356,
+     "share": 0.087079
+    },
+    "Mayo": {
+     "n": 1,
+     "of": 68,
+     "share": 0.014706
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 0,
+     "of": 110,
+     "share": 0.0
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 5,
+     "of": 162,
+     "share": 0.030864
+    },
+    "Laois": {
+     "n": 1,
+     "of": 49,
+     "share": 0.020408
+    },
+    "Leitrim": {
+     "n": 0,
+     "of": 42,
+     "share": 0.0
+    },
+    "Louth": {
+     "n": 1,
+     "of": 47,
+     "share": 0.021277
+    },
+    "Longford": {
+     "n": 2,
+     "of": 27,
+     "share": 0.074074
+    },
+    "Meath": {
+     "n": 1,
+     "of": 33,
+     "share": 0.030303
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 3,
+     "of": 68,
+     "share": 0.044118
+    },
+    "Roscommon": {
+     "n": 0,
+     "of": 79,
+     "share": 0.0
+    },
+    "Sligo": {
+     "n": 0,
+     "of": 113,
+     "share": 0.0
+    },
+    "Tipperary North": {
+     "n": 2,
+     "of": 45,
+     "share": 0.044444
+    },
+    "Tipperary South": {
+     "n": 1,
+     "of": 61,
+     "share": 0.016393
+    },
+    "Wicklow": {
+     "n": 1,
+     "of": 114,
+     "share": 0.008772
+    },
+    "Waterford": {
+     "n": 0,
+     "of": 79,
+     "share": 0.0
+    },
+    "Westmeath": {
+     "n": 1,
+     "of": 69,
+     "share": 0.014493
+    },
+    "Wexford": {
+     "n": 0,
+     "of": 176,
+     "share": 0.0
+    }
+   }
+  },
+  "coins": {
+   "label": "Coins or money",
+   "n": 14,
+   "share": 0.005327,
+   "by_county": {
+    "Clare": {
+     "n": 0,
+     "of": 76,
+     "share": 0.0
+    },
+    "Kerry": {
+     "n": 0,
+     "of": 183,
+     "share": 0.0
+    },
+    "Kilkenny": {
+     "n": 0,
+     "of": 88,
+     "share": 0.0
+    },
+    "Limerick": {
+     "n": 2,
+     "of": 159,
+     "share": 0.012579
+    },
+    "Galway": {
+     "n": 6,
+     "of": 274,
+     "share": 0.021898
+    },
+    "Kildare": {
+     "n": 0,
+     "of": 60,
+     "share": 0.0
+    },
+    "Cork": {
+     "n": 3,
+     "of": 356,
+     "share": 0.008427
+    },
+    "Mayo": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 0,
+     "of": 110,
+     "share": 0.0
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 0,
+     "of": 162,
+     "share": 0.0
+    },
+    "Laois": {
+     "n": 0,
+     "of": 49,
+     "share": 0.0
+    },
+    "Leitrim": {
+     "n": 0,
+     "of": 42,
+     "share": 0.0
+    },
+    "Louth": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Longford": {
+     "n": 0,
+     "of": 27,
+     "share": 0.0
+    },
+    "Meath": {
+     "n": 1,
+     "of": 33,
+     "share": 0.030303
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 2,
+     "of": 68,
+     "share": 0.029412
+    },
+    "Roscommon": {
+     "n": 0,
+     "of": 79,
+     "share": 0.0
+    },
+    "Sligo": {
+     "n": 0,
+     "of": 113,
+     "share": 0.0
+    },
+    "Tipperary North": {
+     "n": 0,
+     "of": 45,
+     "share": 0.0
+    },
+    "Tipperary South": {
+     "n": 0,
+     "of": 61,
+     "share": 0.0
+    },
+    "Wicklow": {
+     "n": 0,
+     "of": 114,
+     "share": 0.0
+    },
+    "Waterford": {
+     "n": 0,
+     "of": 79,
+     "share": 0.0
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 0,
+     "of": 176,
+     "share": 0.0
+    }
+   }
+  },
+  "pattern": {
+   "label": "Pattern, pilgrimage, rounds or stations",
+   "n": 321,
+   "share": 0.122146,
+   "by_county": {
+    "Clare": {
+     "n": 7,
+     "of": 76,
+     "share": 0.092105
+    },
+    "Kerry": {
+     "n": 39,
+     "of": 183,
+     "share": 0.213115
+    },
+    "Kilkenny": {
+     "n": 10,
+     "of": 88,
+     "share": 0.113636
+    },
+    "Limerick": {
+     "n": 19,
+     "of": 159,
+     "share": 0.119497
+    },
+    "Galway": {
+     "n": 7,
+     "of": 274,
+     "share": 0.025547
+    },
+    "Kildare": {
+     "n": 11,
+     "of": 60,
+     "share": 0.183333
+    },
+    "Cork": {
+     "n": 79,
+     "of": 356,
+     "share": 0.22191
+    },
+    "Mayo": {
+     "n": 3,
+     "of": 68,
+     "share": 0.044118
+    },
+    "Cavan": {
+     "n": 9,
+     "of": 35,
+     "share": 0.257143
+    },
+    "Dublin": {
+     "n": 8,
+     "of": 110,
+     "share": 0.072727
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 23,
+     "of": 162,
+     "share": 0.141975
+    },
+    "Laois": {
+     "n": 9,
+     "of": 49,
+     "share": 0.183673
+    },
+    "Leitrim": {
+     "n": 4,
+     "of": 42,
+     "share": 0.095238
+    },
+    "Louth": {
+     "n": 10,
+     "of": 47,
+     "share": 0.212766
+    },
+    "Longford": {
+     "n": 4,
+     "of": 27,
+     "share": 0.148148
+    },
+    "Meath": {
+     "n": 3,
+     "of": 33,
+     "share": 0.090909
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 3,
+     "of": 68,
+     "share": 0.044118
+    },
+    "Roscommon": {
+     "n": 5,
+     "of": 79,
+     "share": 0.063291
+    },
+    "Sligo": {
+     "n": 13,
+     "of": 113,
+     "share": 0.115044
+    },
+    "Tipperary North": {
+     "n": 0,
+     "of": 45,
+     "share": 0.0
+    },
+    "Tipperary South": {
+     "n": 1,
+     "of": 61,
+     "share": 0.016393
+    },
+    "Wicklow": {
+     "n": 10,
+     "of": 114,
+     "share": 0.087719
+    },
+    "Waterford": {
+     "n": 10,
+     "of": 79,
+     "share": 0.126582
+    },
+    "Westmeath": {
+     "n": 1,
+     "of": 69,
+     "share": 0.014493
+    },
+    "Wexford": {
+     "n": 33,
+     "of": 176,
+     "share": 0.1875
+    }
+   }
+  },
+  "still": {
+   "label": "Still visited, venerated or tended",
+   "n": 47,
+   "share": 0.017884,
+   "by_county": {
+    "Clare": {
+     "n": 0,
+     "of": 76,
+     "share": 0.0
+    },
+    "Kerry": {
+     "n": 2,
+     "of": 183,
+     "share": 0.010929
+    },
+    "Kilkenny": {
+     "n": 1,
+     "of": 88,
+     "share": 0.011364
+    },
+    "Limerick": {
+     "n": 3,
+     "of": 159,
+     "share": 0.018868
+    },
+    "Galway": {
+     "n": 0,
+     "of": 274,
+     "share": 0.0
+    },
+    "Kildare": {
+     "n": 2,
+     "of": 60,
+     "share": 0.033333
+    },
+    "Cork": {
+     "n": 14,
+     "of": 356,
+     "share": 0.039326
+    },
+    "Mayo": {
+     "n": 0,
+     "of": 68,
+     "share": 0.0
+    },
+    "Cavan": {
+     "n": 1,
+     "of": 35,
+     "share": 0.028571
+    },
+    "Dublin": {
+     "n": 3,
+     "of": 110,
+     "share": 0.027273
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 10,
+     "of": 162,
+     "share": 0.061728
+    },
+    "Laois": {
+     "n": 0,
+     "of": 49,
+     "share": 0.0
+    },
+    "Leitrim": {
+     "n": 1,
+     "of": 42,
+     "share": 0.02381
+    },
+    "Louth": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Longford": {
+     "n": 0,
+     "of": 27,
+     "share": 0.0
+    },
+    "Meath": {
+     "n": 0,
+     "of": 33,
+     "share": 0.0
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 2,
+     "of": 68,
+     "share": 0.029412
+    },
+    "Roscommon": {
+     "n": 1,
+     "of": 79,
+     "share": 0.012658
+    },
+    "Sligo": {
+     "n": 3,
+     "of": 113,
+     "share": 0.026549
+    },
+    "Tipperary North": {
+     "n": 1,
+     "of": 45,
+     "share": 0.022222
+    },
+    "Tipperary South": {
+     "n": 0,
+     "of": 61,
+     "share": 0.0
+    },
+    "Wicklow": {
+     "n": 1,
+     "of": 114,
+     "share": 0.008772
+    },
+    "Waterford": {
+     "n": 2,
+     "of": 79,
+     "share": 0.025316
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 0,
+     "of": 176,
+     "share": 0.0
+    }
+   }
+  },
+  "tree": {
+   "label": "A tree at the well",
+   "n": 171,
+   "share": 0.065068,
+   "by_county": {
+    "Clare": {
+     "n": 6,
+     "of": 76,
+     "share": 0.078947
+    },
+    "Kerry": {
+     "n": 13,
+     "of": 183,
+     "share": 0.071038
+    },
+    "Kilkenny": {
+     "n": 5,
+     "of": 88,
+     "share": 0.056818
+    },
+    "Limerick": {
+     "n": 22,
+     "of": 159,
+     "share": 0.138365
+    },
+    "Galway": {
+     "n": 15,
+     "of": 274,
+     "share": 0.054745
+    },
+    "Kildare": {
+     "n": 3,
+     "of": 60,
+     "share": 0.05
+    },
+    "Cork": {
+     "n": 37,
+     "of": 356,
+     "share": 0.103933
+    },
+    "Mayo": {
+     "n": 6,
+     "of": 68,
+     "share": 0.088235
+    },
+    "Cavan": {
+     "n": 0,
+     "of": 35,
+     "share": 0.0
+    },
+    "Dublin": {
+     "n": 11,
+     "of": 110,
+     "share": 0.1
+    },
+    "Carlow": {
+     "n": 0,
+     "of": 47,
+     "share": 0.0
+    },
+    "Donegal": {
+     "n": 3,
+     "of": 162,
+     "share": 0.018519
+    },
+    "Laois": {
+     "n": 4,
+     "of": 49,
+     "share": 0.081633
+    },
+    "Leitrim": {
+     "n": 4,
+     "of": 42,
+     "share": 0.095238
+    },
+    "Louth": {
+     "n": 1,
+     "of": 47,
+     "share": 0.021277
+    },
+    "Longford": {
+     "n": 4,
+     "of": 27,
+     "share": 0.148148
+    },
+    "Meath": {
+     "n": 2,
+     "of": 33,
+     "share": 0.060606
+    },
+    "Monaghan": {
+     "n": 1,
+     "of": 8,
+     "share": 0.125
+    },
+    "Offaly": {
+     "n": 7,
+     "of": 68,
+     "share": 0.102941
+    },
+    "Roscommon": {
+     "n": 2,
+     "of": 79,
+     "share": 0.025316
+    },
+    "Sligo": {
+     "n": 4,
+     "of": 113,
+     "share": 0.035398
+    },
+    "Tipperary North": {
+     "n": 1,
+     "of": 45,
+     "share": 0.022222
+    },
+    "Tipperary South": {
+     "n": 5,
+     "of": 61,
+     "share": 0.081967
+    },
+    "Wicklow": {
+     "n": 4,
+     "of": 114,
+     "share": 0.035088
+    },
+    "Waterford": {
+     "n": 5,
+     "of": 79,
+     "share": 0.063291
+    },
+    "Westmeath": {
+     "n": 4,
+     "of": 69,
+     "share": 0.057971
+    },
+    "Wexford": {
+     "n": 2,
+     "of": 176,
+     "share": 0.011364
+    }
+   }
+  },
+  "church": {
+   "label": "A church, graveyard or church site nearby",
+   "n": 630,
+   "share": 0.239726,
+   "by_county": {
+    "Clare": {
+     "n": 21,
+     "of": 76,
+     "share": 0.276316
+    },
+    "Kerry": {
+     "n": 28,
+     "of": 183,
+     "share": 0.153005
+    },
+    "Kilkenny": {
+     "n": 41,
+     "of": 88,
+     "share": 0.465909
+    },
+    "Limerick": {
+     "n": 26,
+     "of": 159,
+     "share": 0.163522
+    },
+    "Galway": {
+     "n": 72,
+     "of": 274,
+     "share": 0.262774
+    },
+    "Kildare": {
+     "n": 21,
+     "of": 60,
+     "share": 0.35
+    },
+    "Cork": {
+     "n": 74,
+     "of": 356,
+     "share": 0.207865
+    },
+    "Mayo": {
+     "n": 18,
+     "of": 68,
+     "share": 0.264706
+    },
+    "Cavan": {
+     "n": 10,
+     "of": 35,
+     "share": 0.285714
+    },
+    "Dublin": {
+     "n": 30,
+     "of": 110,
+     "share": 0.272727
+    },
+    "Carlow": {
+     "n": 3,
+     "of": 47,
+     "share": 0.06383
+    },
+    "Donegal": {
+     "n": 40,
+     "of": 162,
+     "share": 0.246914
+    },
+    "Laois": {
+     "n": 17,
+     "of": 49,
+     "share": 0.346939
+    },
+    "Leitrim": {
+     "n": 8,
+     "of": 42,
+     "share": 0.190476
+    },
+    "Louth": {
+     "n": 4,
+     "of": 47,
+     "share": 0.085106
+    },
+    "Longford": {
+     "n": 4,
+     "of": 27,
+     "share": 0.148148
+    },
+    "Meath": {
+     "n": 11,
+     "of": 33,
+     "share": 0.333333
+    },
+    "Monaghan": {
+     "n": 3,
+     "of": 8,
+     "share": 0.375
+    },
+    "Offaly": {
+     "n": 23,
+     "of": 68,
+     "share": 0.338235
+    },
+    "Roscommon": {
+     "n": 23,
+     "of": 79,
+     "share": 0.291139
+    },
+    "Sligo": {
+     "n": 11,
+     "of": 113,
+     "share": 0.097345
+    },
+    "Tipperary North": {
+     "n": 14,
+     "of": 45,
+     "share": 0.311111
+    },
+    "Tipperary South": {
+     "n": 20,
+     "of": 61,
+     "share": 0.327869
+    },
+    "Wicklow": {
+     "n": 25,
+     "of": 114,
+     "share": 0.219298
+    },
+    "Waterford": {
+     "n": 27,
+     "of": 79,
+     "share": 0.341772
+    },
+    "Westmeath": {
+     "n": 29,
+     "of": 69,
+     "share": 0.42029
+    },
+    "Wexford": {
+     "n": 27,
+     "of": 176,
+     "share": 0.153409
+    }
+   }
+  },
+  "statue": {
+   "label": "A statue, shrine, grotto or cross at the well",
+   "n": 88,
+   "share": 0.033486,
+   "by_county": {
+    "Clare": {
+     "n": 0,
+     "of": 76,
+     "share": 0.0
+    },
+    "Kerry": {
+     "n": 13,
+     "of": 183,
+     "share": 0.071038
+    },
+    "Kilkenny": {
+     "n": 0,
+     "of": 88,
+     "share": 0.0
+    },
+    "Limerick": {
+     "n": 10,
+     "of": 159,
+     "share": 0.062893
+    },
+    "Galway": {
+     "n": 7,
+     "of": 274,
+     "share": 0.025547
+    },
+    "Kildare": {
+     "n": 0,
+     "of": 60,
+     "share": 0.0
+    },
+    "Cork": {
+     "n": 31,
+     "of": 356,
+     "share": 0.087079
+    },
+    "Mayo": {
+     "n": 1,
+     "of": 68,
+     "share": 0.014706
+    },
+    "Cavan": {
+     "n": 1,
+     "of": 35,
+     "share": 0.028571
+    },
+    "Dublin": {
+     "n": 2,
+     "of": 110,
+     "share": 0.018182
+    },
+    "Carlow": {
+     "n": 1,
+     "of": 47,
+     "share": 0.021277
+    },
+    "Donegal": {
+     "n": 2,
+     "of": 162,
+     "share": 0.012346
+    },
+    "Laois": {
+     "n": 0,
+     "of": 49,
+     "share": 0.0
+    },
+    "Leitrim": {
+     "n": 1,
+     "of": 42,
+     "share": 0.02381
+    },
+    "Louth": {
+     "n": 1,
+     "of": 47,
+     "share": 0.021277
+    },
+    "Longford": {
+     "n": 2,
+     "of": 27,
+     "share": 0.074074
+    },
+    "Meath": {
+     "n": 0,
+     "of": 33,
+     "share": 0.0
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 3,
+     "of": 68,
+     "share": 0.044118
+    },
+    "Roscommon": {
+     "n": 1,
+     "of": 79,
+     "share": 0.012658
+    },
+    "Sligo": {
+     "n": 2,
+     "of": 113,
+     "share": 0.017699
+    },
+    "Tipperary North": {
+     "n": 2,
+     "of": 45,
+     "share": 0.044444
+    },
+    "Tipperary South": {
+     "n": 0,
+     "of": 61,
+     "share": 0.0
+    },
+    "Wicklow": {
+     "n": 3,
+     "of": 114,
+     "share": 0.026316
+    },
+    "Waterford": {
+     "n": 3,
+     "of": 79,
+     "share": 0.037975
+    },
+    "Westmeath": {
+     "n": 0,
+     "of": 69,
+     "share": 0.0
+    },
+    "Wexford": {
+     "n": 2,
+     "of": 176,
+     "share": 0.011364
+    }
+   }
+  },
+  "lost": {
+   "label": "Dry, lost or site only",
+   "n": 541,
+   "share": 0.20586,
+   "by_county": {
+    "Clare": {
+     "n": 7,
+     "of": 76,
+     "share": 0.092105
+    },
+    "Kerry": {
+     "n": 34,
+     "of": 183,
+     "share": 0.185792
+    },
+    "Kilkenny": {
+     "n": 6,
+     "of": 88,
+     "share": 0.068182
+    },
+    "Limerick": {
+     "n": 39,
+     "of": 159,
+     "share": 0.245283
+    },
+    "Galway": {
+     "n": 60,
+     "of": 274,
+     "share": 0.218978
+    },
+    "Kildare": {
+     "n": 18,
+     "of": 60,
+     "share": 0.3
+    },
+    "Cork": {
+     "n": 135,
+     "of": 356,
+     "share": 0.379213
+    },
+    "Mayo": {
+     "n": 13,
+     "of": 68,
+     "share": 0.191176
+    },
+    "Cavan": {
+     "n": 10,
+     "of": 35,
+     "share": 0.285714
+    },
+    "Dublin": {
+     "n": 33,
+     "of": 110,
+     "share": 0.3
+    },
+    "Carlow": {
+     "n": 1,
+     "of": 47,
+     "share": 0.021277
+    },
+    "Donegal": {
+     "n": 27,
+     "of": 162,
+     "share": 0.166667
+    },
+    "Laois": {
+     "n": 7,
+     "of": 49,
+     "share": 0.142857
+    },
+    "Leitrim": {
+     "n": 4,
+     "of": 42,
+     "share": 0.095238
+    },
+    "Louth": {
+     "n": 4,
+     "of": 47,
+     "share": 0.085106
+    },
+    "Longford": {
+     "n": 2,
+     "of": 27,
+     "share": 0.074074
+    },
+    "Meath": {
+     "n": 5,
+     "of": 33,
+     "share": 0.151515
+    },
+    "Monaghan": {
+     "n": 0,
+     "of": 8,
+     "share": 0.0
+    },
+    "Offaly": {
+     "n": 18,
+     "of": 68,
+     "share": 0.264706
+    },
+    "Roscommon": {
+     "n": 14,
+     "of": 79,
+     "share": 0.177215
+    },
+    "Sligo": {
+     "n": 14,
+     "of": 113,
+     "share": 0.123894
+    },
+    "Tipperary North": {
+     "n": 10,
+     "of": 45,
+     "share": 0.222222
+    },
+    "Tipperary South": {
+     "n": 17,
+     "of": 61,
+     "share": 0.278689
+    },
+    "Wicklow": {
+     "n": 12,
+     "of": 114,
+     "share": 0.105263
+    },
+    "Waterford": {
+     "n": 6,
+     "of": 79,
+     "share": 0.075949
+    },
+    "Westmeath": {
+     "n": 21,
+     "of": 69,
+     "share": 0.304348
+    },
+    "Wexford": {
+     "n": 24,
+     "of": 176,
+     "share": 0.136364
+    }
+   }
+  }
+ },
+ "practice_examples": [
+  {
+   "practice": "cure",
+   "smr": "KE034-047004",
+   "county": "Kerry",
+   "name": "St. Brendan's Well",
+   "snippet": "...and consists simply of a rectangular depression filled with water. Its curative powers were complemented by those of Leac an Droma, a ston...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=KE034-047004-"
+  },
+  {
+   "practice": "cure",
+   "smr": "CO109-074",
+   "county": "Cork",
+   "name": "",
+   "snippet": "...built surround (H c. 0.4m; Wth 0.75m) roofed with stone slab. Known as \"wart well\"; now silted up. (CMMS).  The above description is derived from the published...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=CO109-074----"
+  },
+  {
+   "practice": "cure",
+   "smr": "CO071-112",
+   "county": "Cork",
+   "name": "St Bartholomew's Well",
+   "snippet": "...frequented on 24 August and is considered by the superstitious, capable of curing the ague'.  The above descrip...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=CO071-112----"
+  },
+  {
+   "practice": "eyes",
+   "smr": "DG052-018",
+   "county": "Donegal",
+   "name": "Tobernasool",
+   "snippet": "Described by Ó Muirgheasa in 1936 as 'Tobar na Súl, \"the Well of the Eyes,\" is the name of a Holy Well on the top of Cnoc a' Toighe, to the south of Churchill....",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DG052-018----"
+  },
+  {
+   "practice": "eyes",
+   "smr": "KK008-132",
+   "county": "Kilkenny",
+   "name": "",
+   "snippet": "...(1839) refer to this well as, 'Tobar na Súl', that is the 'Well of the Eyes, at the distance of a quarter of a mile east of the Church [of Rathlogan KK008-082001-]....",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=KK008-132----"
+  },
+  {
+   "practice": "eyes",
+   "smr": "KE045-095",
+   "county": "Kerry",
+   "name": "",
+   "snippet": "...Ghobnait is a natural spring which reputedly had the power to cure sore eyes. Rounds have not been made here in recent times (An Seabhac 1939, 200).  Ó Danachair...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=KE045-095----"
+  },
+  {
+   "practice": "warts",
+   "smr": "RO052-024",
+   "county": "Roscommon",
+   "name": "",
+   "snippet": "...outcrop is known locally as St Bridget's Well and was renowned for a cure of warts, but it was deepened on several occasions and is now visible as a slight hollow,...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=RO052-024----"
+  },
+  {
+   "practice": "warts",
+   "smr": "CO058-047",
+   "county": "Cork",
+   "name": "Tobernasangny",
+   "snippet": "...depression covered with metal sheeting. Well is dry and known locally as 'wart well'. According to O'Donoghue (1986, 232),'Tober Seanganach (well of the place...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=CO058-047----"
+  },
+  {
+   "practice": "warts",
+   "smr": "TN023-035",
+   "county": "Tipperary North",
+   "name": "",
+   "snippet": "...(Stout 1984, 90). 'According to tradition the water from this well cured warts, providing a pe...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=TN023-035----"
+  },
+  {
+   "practice": "head_teeth",
+   "smr": "KD018-019002",
+   "county": "Kildare",
+   "name": "St. Patrick's Well",
+   "snippet": "According to Jackson (1979-80, 149), the well was associated with cures for headaches and sore limbs and a pattern was held there on March 17th. In the N sector of a...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=KD018-019002-"
+  },
+  {
+   "practice": "head_teeth",
+   "smr": "DU022-053",
+   "county": "Dublin",
+   "name": "",
+   "snippet": "...records that it was a curative well. The waters were believed to cure headaches and indigestion. Not precisely l...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DU022-053----"
+  },
+  {
+   "practice": "head_teeth",
+   "smr": "WI003-031001",
+   "county": "Wicklow",
+   "name": "Well",
+   "snippet": "...OS Letters (O'Flanagan 1928, 3) mention that the well was visited for headache cures.  The above description...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=WI003-031001-"
+  },
+  {
+   "practice": "rags",
+   "smr": "DG103-052",
+   "county": "Donegal",
+   "name": "",
+   "snippet": "A former 'rag well', now dried up and disused. Recorded in 1936 as \"St. Barron's Holy Well at...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DG103-052----"
+  },
+  {
+   "practice": "rags",
+   "smr": "RO039-047",
+   "county": "Roscommon",
+   "name": "St Coman's Vat",
+   "snippet": "...according to J. O'Donovan in the 1830s, venerated in the 19th century when a rag bush stood beside...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=RO039-047----"
+  },
+  {
+   "practice": "rags",
+   "smr": "RO042-168001",
+   "county": "Roscommon",
+   "name": "",
+   "snippet": "...by a masonry wall (Wth 0.9m; H 0.5m) with an opening at E. There is a rag-tree (...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=RO042-168001-"
+  },
+  {
+   "practice": "offerings",
+   "smr": "DG069-009",
+   "county": "Donegal",
+   "name": "Toberbride",
+   "snippet": "A well dedicated to St. Brigid surrounded by contemporary votive offerings.  The above description was derived from the 'Archaeological Survey of...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DG069-009----"
+  },
+  {
+   "practice": "offerings",
+   "smr": "DG078-007",
+   "county": "Donegal",
+   "name": "Holy Well",
+   "snippet": "A well dedicated to St. Brigid with contemporary votive offerings. Described by Ó Muirgheasa in 1936 as 'St. Brigid's Holy Well, south-east...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DG078-007----"
+  },
+  {
+   "practice": "offerings",
+   "smr": "CO040-017",
+   "county": "Cork",
+   "name": "Sunday's Well",
+   "snippet": "...walling surround and corbelled roof; rough paving to front; statues and votive offerings around well. Two stones atop roof; larger stone (H 0.12m; Wth 0.12m) inscribed...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=CO040-017----"
+  },
+  {
+   "practice": "coins",
+   "smr": "GA089-027",
+   "county": "Galway",
+   "name": "",
+   "snippet": "...sloping channel, on the outer flank of a sloping rock. It contains a single coin (info. T. Robinson). Not visited.  The above de...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=GA089-027----"
+  },
+  {
+   "practice": "coins",
+   "smr": "OF014-019",
+   "county": "Offaly",
+   "name": "Bridget's Well",
+   "snippet": "...holy well now dried up with votive offerings attached to nearby tree and coins deposited at base of well.  Depicted as 'Bridget's Well' on th",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=OF014-019----"
+  },
+  {
+   "practice": "coins",
+   "smr": "CO150-036001",
+   "county": "Cork",
+   "name": "Toberanargid",
+   "snippet": "...century Sir Fineen O'Driscoll is supposed to have thrown fistfuls of silver coins into well to...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=CO150-036001-"
+  },
+  {
+   "practice": "pattern",
+   "smr": "LF005-016",
+   "county": "Longford",
+   "name": "Holy Well",
+   "snippet": "...indicates that it is dedicated to St Patrick. It was visited by local pilgrims on the 1st, second Sunday and 15th of August (Devaney...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=LF005-016----"
+  },
+  {
+   "practice": "pattern",
+   "smr": "CO042-004",
+   "county": "Cork",
+   "name": "St Patrick's Well",
+   "snippet": "...(1905-25, vol. 3, 340) and Bowman (1934, 603) as a holy well at which rounds were paid on 16th and 17th March.  The above description is derived from the...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=CO042-004----"
+  },
+  {
+   "practice": "pattern",
+   "smr": "WA021-042",
+   "county": "Waterford",
+   "name": "",
+   "snippet": "...holy well called 'Tobar a Chrann' -the tree well - in Deerpark at which rounds were made in living memory. It is not located.  Power, Rev. P. (1952) The placenames...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=WA021-042----"
+  },
+  {
+   "practice": "still",
+   "smr": "LI038-011",
+   "county": "Limerick",
+   "name": "St Patrick's Well",
+   "snippet": "...Spring enclosed by recent surround surmounted by statue of St Patrick. Still venerated, with a variety of devotionalia hung about the surround as well as coins dropped...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=LI038-011----"
+  },
+  {
+   "practice": "still",
+   "smr": "DG040-003",
+   "county": "Donegal",
+   "name": "St. Bridget's Well's",
+   "snippet": "...Apparently new wells are constantly dug. A turas or pilgrimage involving these still takes place here. Describ...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DG040-003----"
+  },
+  {
+   "practice": "still",
+   "smr": "DG053-033002",
+   "county": "Donegal",
+   "name": "Lecky Holy Well",
+   "snippet": "...(DG053-033001-) is situated inside a graveyard (DG053-033004-), which is still in use. Outside the E wall of the graveyard beside a stream, is a boulder (DG053-033003-)...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DG053-033002-"
+  },
+  {
+   "practice": "tree",
+   "smr": "CO064-053",
+   "county": "Cork",
+   "name": "Ruown Well",
+   "snippet": "On high ground to E of Glenmore river. Infilled; whitethorn bush marks site. According to Power (1923, 23) well 'covered overhead by a flagstone...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=CO064-053----"
+  },
+  {
+   "practice": "tree",
+   "smr": "DU017-027",
+   "county": "Dublin",
+   "name": "Tobermaclugg",
+   "snippet": "This is a natural spring situated in a hollow by a tree. Accessible from steps (Ó Danachair 1958, 83). It is dedicated to St. John (Daly...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=DU017-027----"
+  },
+  {
+   "practice": "tree",
+   "smr": "LF002-006001",
+   "county": "Longford",
+   "name": "Tober Patrick",
+   "snippet": "...drystone wall (H 0.4-0.5m; Wth 0.8m) with a gap for access at the W. A holy tree (LF002-006005-) at its N edge is associated. A small, low, circular...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=LF002-006001-"
+  },
+  {
+   "practice": "church",
+   "smr": "KD018-019002",
+   "county": "Kildare",
+   "name": "St. Patrick's Well",
+   "snippet": "...limbs and a pattern was held there on March 17th. In the N sector of a graveyard (KD018-019003-). A spring well feeds a small channel which flows E (L c. 20m)...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=KD018-019002-"
+  },
+  {
+   "practice": "church",
+   "smr": "MA121-065004",
+   "county": "Mayo",
+   "name": "Toberkeeran",
+   "snippet": "...pasture, 70m E of Kilkeeran eccesiastical enclosure (MA121-065003-) and church (MA121-065001-). Circular, dry-stone wall (2.5m N-S; 2.5m E-W) encloses a well (D...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=MA121-065004-"
+  },
+  {
+   "practice": "church",
+   "smr": "WM024-054004",
+   "county": "Westmeath",
+   "name": "",
+   "snippet": "...the 17th century.  St. Brigid’s holy well (WM024-054002-), St. Brigid’s Church (WM024-054001-) and a building (WM024-05...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=WM024-054004-"
+  },
+  {
+   "practice": "statue",
+   "smr": "GA090-024",
+   "county": "Galway",
+   "name": "",
+   "snippet": "...(L/Wth 0.3m) caused by erosion where three fissures meet. There is a small shrine beside the well and two oval enclosures with little flower garden...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=GA090-024----"
+  },
+  {
+   "practice": "statue",
+   "smr": "LE001-003",
+   "county": "Leitrim",
+   "name": "St. Patrick's Well",
+   "snippet": "...x 0.3m; D 0.25m) on the W side, which is still venerated. and a modern shrine....",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=LE001-003----"
+  },
+  {
+   "practice": "statue",
+   "smr": "TN031-012",
+   "county": "Tipperary North",
+   "name": "St. Conan's Well",
+   "snippet": "...drystone wall surround. Votive offerings are visible and there is a broken statue in an aumbry ov...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=TN031-012----"
+  },
+  {
+   "practice": "lost",
+   "smr": "LE005-003004",
+   "county": "Leitrim",
+   "name": "",
+   "snippet": "The site of St Mogue's Well (LE005-003-003-) lies c. 150m to NE of the church (LE003-003001-)...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=LE005-003004-"
+  },
+  {
+   "practice": "lost",
+   "smr": "ME017-045",
+   "county": "Meath",
+   "name": "St. Columb's Well",
+   "snippet": "...5.75m NW-SE) defined by an earthen bank and hedge, c. 500m WSW of the site of the early church (ME017-044012-). It is accessed by a sign-posted path from the...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=ME017-045----"
+  },
+  {
+   "practice": "lost",
+   "smr": "SL008-153",
+   "county": "Sligo",
+   "name": "Tober Columbkille",
+   "snippet": "...on which it bears the designation 'Tober Columbkille' The well has been filled in and there are no remains visible at ground level.  Compi...",
+   "url": "https://maps.archaeology.ie/HistoricEnvironment/?SMRS=SL008-153----"
+  }
+ ],
+ "any_folk": 496,
+ "any_folk_share": 0.188737,
+ "rags_or_offerings": 96,
+ "rags_or_offerings_share": 0.03653,
+ "folk_given_saint": 0.193833,
+ "folk_given_nosaint": 0.186047,
+ "n_desc_with_saint": 908,
+ "n_desc_no_saint": 1720,
+ "practice_counties": [
+  {
+   "county": "Kildare",
+   "of": 60,
+   "cure": 0.15,
+   "rags_off": 0.016667,
+   "pattern": 0.183333,
+   "still": 0.033333
+  },
+  {
+   "county": "Dublin",
+   "of": 110,
+   "cure": 0.127273,
+   "rags_off": 0.009091,
+   "pattern": 0.072727,
+   "still": 0.027273
+  },
+  {
+   "county": "Roscommon",
+   "of": 79,
+   "cure": 0.088608,
+   "rags_off": 0.025316,
+   "pattern": 0.063291,
+   "still": 0.012658
+  },
+  {
+   "county": "Limerick",
+   "of": 159,
+   "cure": 0.08805,
+   "rags_off": 0.056604,
+   "pattern": 0.119497,
+   "still": 0.018868
+  },
+  {
+   "county": "Cork",
+   "of": 356,
+   "cure": 0.08427,
+   "rags_off": 0.092697,
+   "pattern": 0.22191,
+   "still": 0.039326
+  },
+  {
+   "county": "Kerry",
+   "of": 183,
+   "cure": 0.071038,
+   "rags_off": 0.027322,
+   "pattern": 0.213115,
+   "still": 0.010929
+  },
+  {
+   "county": "Wicklow",
+   "of": 114,
+   "cure": 0.070175,
+   "rags_off": 0.026316,
+   "pattern": 0.087719,
+   "still": 0.008772
+  },
+  {
+   "county": "Tipperary North",
+   "of": 45,
+   "cure": 0.066667,
+   "rags_off": 0.044444,
+   "pattern": 0.0,
+   "still": 0.022222
+  },
+  {
+   "county": "Donegal",
+   "of": 162,
+   "cure": 0.055556,
+   "rags_off": 0.04321,
+   "pattern": 0.141975,
+   "still": 0.061728
+  },
+  {
+   "county": "Waterford",
+   "of": 79,
+   "cure": 0.050633,
+   "rags_off": 0.0,
+   "pattern": 0.126582,
+   "still": 0.025316
+  },
+  {
+   "county": "Leitrim",
+   "of": 42,
+   "cure": 0.047619,
+   "rags_off": 0.0,
+   "pattern": 0.095238,
+   "still": 0.02381
+  },
+  {
+   "county": "Kilkenny",
+   "of": 88,
+   "cure": 0.045455,
+   "rags_off": 0.022727,
+   "pattern": 0.113636,
+   "still": 0.011364
+  },
+  {
+   "county": "Offaly",
+   "of": 68,
+   "cure": 0.044118,
+   "rags_off": 0.044118,
+   "pattern": 0.044118,
+   "still": 0.029412
+  },
+  {
+   "county": "Louth",
+   "of": 47,
+   "cure": 0.042553,
+   "rags_off": 0.021277,
+   "pattern": 0.212766,
+   "still": 0.0
+  },
+  {
+   "county": "Laois",
+   "of": 49,
+   "cure": 0.040816,
+   "rags_off": 0.020408,
+   "pattern": 0.183673,
+   "still": 0.0
+  },
+  {
+   "county": "Wexford",
+   "of": 176,
+   "cure": 0.028409,
+   "rags_off": 0.011364,
+   "pattern": 0.1875,
+   "still": 0.0
+  },
+  {
+   "county": "Clare",
+   "of": 76,
+   "cure": 0.026316,
+   "rags_off": 0.026316,
+   "pattern": 0.092105,
+   "still": 0.0
+  },
+  {
+   "county": "Galway",
+   "of": 274,
+   "cure": 0.018248,
+   "rags_off": 0.047445,
+   "pattern": 0.025547,
+   "still": 0.0
+  },
+  {
+   "county": "Sligo",
+   "of": 113,
+   "cure": 0.00885,
+   "rags_off": 0.0,
+   "pattern": 0.115044,
+   "still": 0.026549
+  },
+  {
+   "county": "Mayo",
+   "of": 68,
+   "cure": 0.0,
+   "rags_off": 0.029412,
+   "pattern": 0.044118,
+   "still": 0.0
+  },
+  {
+   "county": "Carlow",
+   "of": 47,
+   "cure": 0.0,
+   "rags_off": 0.0,
+   "pattern": 0.0,
+   "still": 0.0
+  },
+  {
+   "county": "Tipperary South",
+   "of": 61,
+   "cure": 0.0,
+   "rags_off": 0.032787,
+   "pattern": 0.016393,
+   "still": 0.0
+  },
+  {
+   "county": "Westmeath",
+   "of": 69,
+   "cure": 0.0,
+   "rags_off": 0.014493,
+   "pattern": 0.014493,
+   "still": 0.0
+  }
+ ],
+ "n_churches": 41965,
+ "n_random": 20000,
+ "churches": {
+  "Republic of Ireland": {
+   "n": 3025,
+   "median_m": 2172.702534,
+   "random_median_m": 2690.314186,
+   "within_500": 0.149421,
+   "random_within_500": 0.026,
+   "within_1000": 0.243636,
+   "random_within_1000": 0.0954,
+   "other_n": 302,
+   "other_within_500": 0.112583,
+   "other_within_1000": 0.218543,
+   "other_median_m": 1915.189418,
+   "ratio_500": 5.74698
+  },
+  "Britain": {
+   "n": 373,
+   "median_m": 321.827697,
+   "random_median_m": 1631.33858,
+   "within_500": 0.61126,
+   "random_within_500": 0.08775,
+   "within_1000": 0.801609,
+   "random_within_1000": 0.265,
+   "other_n": 786,
+   "other_within_500": 0.283715,
+   "other_within_1000": 0.463104,
+   "other_median_m": 1108.982187,
+   "ratio_500": 6.965927
+  }
+ },
+ "same_saint": {
+  "Republic of Ireland": {
+   "wells_with_saint": 1007,
+   "with_named_church_2km": 409,
+   "same_saint": 0.361858,
+   "shuffled_mean": 0.081487,
+   "shuffled_p95": 0.102689,
+   "n_same": 148
+  },
+  "Britain": {
+   "wells_with_saint": 279,
+   "with_named_church_2km": 238,
+   "same_saint": 0.554622,
+   "shuffled_mean": 0.103966,
+   "shuffled_p95": 0.130252,
+   "n_same": 132
+  }
+ },
+ "roi_per1000": 43.559526,
+ "ni_per1000": 2.736592,
+ "dens_rows": [
+  {
+   "label": "Republic of Ireland",
+   "per1000": 43.559526,
+   "osm": 13.79505
+  },
+  {
+   "label": "Northern Ireland",
+   "per1000": 2.736592,
+   "osm": 2.526085
+  },
+  {
+   "label": "Wales",
+   "per1000": 3.174573,
+   "osm": 2.164481
+  },
+  {
+   "label": "England",
+   "per1000": 1.853794,
+   "osm": 1.50142
+  },
+  {
+   "label": "Scotland",
+   "per1000": 0.825741,
+   "osm": 0.813037
+  },
+  {
+   "label": "Isle of Man",
+   "per1000": 5.196605,
+   "osm": 5.196605
+  }
+ ],
+ "n_sites_on_map": 4547,
+ "nms_site_of": 156,
+ "companion": {
+  "wd_ie_wells": 1021,
+  "wd_ie_identified": 515,
+  "brigid_share": 0.231068,
+  "brigid_n": 119,
+  "mary_n": 88,
+  "patrick_n": 29,
+  "doi": "10.5281/zenodo.23677171",
+  "url": "https://tristan-hotham.github.io/saints-and-wells/"
+ },
+ "roi_brigid_share": 0.112214,
+ "roi_mary_share": 0.160874,
+ "roi_patrick_share": 0.159881,
+ "roi_saint_share_named": 0.470121,
+ "nms_named_share": 0.708099,
+ "roi_saint_irish_form_share": 0.23138,
+ "n_holy_gb": 373
+}

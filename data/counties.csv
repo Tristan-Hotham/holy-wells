@@ -1,0 +1,117 @@
+unit,nation,area_km2,holy_wells,per_1000_km2
+Dublin,Republic of Ireland,911.5,110,120.68
+Kilkenny,Republic of Ireland,2054.8,156,75.92
+Wexford,Republic of Ireland,2338.4,176,75.27
+Clare,Republic of Ireland,3236.1,241,74.47
+Louth,Republic of Ireland,787.1,51,64.79
+Sligo,Republic of Ireland,1834.0,117,63.79
+Limerick,Republic of Ireland,2717.5,159,58.51
+Wicklow,Republic of Ireland,1983.0,114,57.49
+Galway,Republic of Ireland,6084.0,319,52.43
+Carlow,Republic of Ireland,906.9,47,51.82
+Cork,Republic of Ireland,7258.1,358,49.32
+Waterford,Republic of Ireland,1836.5,79,43.02
+Westmeath,Republic of Ireland,1862.1,72,38.67
+Kerry,Republic of Ireland,4798.8,183,38.13
+Kildare,Republic of Ireland,1720.4,60,34.88
+Donegal,Republic of Ireland,4790.9,165,34.44
+Offaly,Republic of Ireland,2026.3,68,33.56
+Roscommon,Republic of Ireland,2503.5,79,31.56
+Laois,Republic of Ireland,1703.9,49,28.76
+Tipperary South,Republic of Ireland,2122.6,61,28.74
+Mayo,Republic of Ireland,5552.3,148,26.66
+Leitrim,Republic of Ireland,1617.8,42,25.96
+Longford,Republic of Ireland,1110.1,27,24.32
+Meath,Republic of Ireland,2344.7,54,23.03
+Tipperary North,Republic of Ireland,2177.6,45,20.66
+Cavan,Republic of Ireland,1892.1,37,19.55
+Bristol,England,110.0,2,18.18
+Cornwall,England,3566.1,57,15.98
+City of Edinburgh,Scotland,263.9,4,15.16
+Clackmannanshire,Scotland,159.3,2,12.55
+Glasgow City,Scotland,175.7,2,11.38
+Aberdeen City,Scotland,185.8,2,10.76
+South Glamorgan,Wales,474.4,4,8.43
+Clwyd,Wales,2911.5,20,6.87
+Monaghan,Republic of Ireland,1274.2,8,6.28
+Merseyside,England,644.8,4,6.2
+Gwynedd,Wales,3264.8,20,6.13
+Isle of Wight,England,380.7,2,5.25
+Isle of Man,Isle of Man,577.3,3,5.2
+East Riding of Yorkshire,England,2479.4,10,4.03
+South Yorkshire,England,1553.3,6,3.86
+West Yorkshire,England,2032.0,7,3.44
+Worcestershire,England,1742.9,6,3.44
+Gloucestershire,England,3152.7,10,3.17
+East Lothian,Scotland,680.4,2,2.94
+Northern Ireland,Northern Ireland,14251.3,39,2.74
+Devon,England,6712.3,18,2.68
+Mid Glamorgan,Wales,786.0,2,2.54
+Greater London,England,1579.1,4,2.53
+West Glamorgan,Wales,821.9,2,2.43
+Berkshire,England,1262.9,3,2.38
+West Lothian,Scotland,429.9,1,2.33
+Angus,Scotland,2186.7,5,2.29
+North Ayrshire,Scotland,884.0,2,2.26
+Durham,England,2730.3,6,2.2
+North Lanarkshire,Scotland,471.8,1,2.12
+Dyfed,Wales,5778.8,12,2.08
+Cambridgeshire,England,3401.3,7,2.06
+Gwent,Wales,1554.4,3,1.93
+Somerset,England,4181.4,8,1.91
+Aberdeenshire,Scotland,6321.3,12,1.9
+North Yorkshire,England,8618.3,16,1.86
+Tyne and Wear,England,543.3,1,1.84
+Surrey,England,1670.9,3,1.8
+Cumbria,England,6824.9,12,1.76
+South Lanarkshire,Scotland,1775.6,3,1.69
+East Ayrshire,Scotland,1271.5,2,1.57
+Oxfordshire,England,2608.3,4,1.53
+Fife,Scotland,1326.0,2,1.51
+Dorset,England,2658.3,4,1.5
+Staffordshire,England,2721.0,4,1.47
+Shropshire,England,3488.4,5,1.43
+Nottinghamshire,England,2162.3,3,1.39
+Moray,Scotland,2240.1,3,1.34
+Cheshire,England,2345.2,3,1.28
+Derbyshire,England,2630.2,3,1.14
+West Midlands,England,901.4,1,1.11
+Buckinghamshire,England,1875.6,2,1.07
+Warwickshire,England,1978.5,2,1.01
+West Sussex,England,1993.2,2,1.0
+Northumberland,England,5030.2,5,0.99
+Lancashire,England,3074.6,3,0.98
+Leicestershire,England,2158.0,2,0.93
+Scottish Borders,Scotland,4744.1,4,0.84
+South Ayrshire,Scotland,1224.4,1,0.82
+Bedfordshire,England,1235.7,1,0.81
+Greater Manchester,England,1276.8,1,0.78
+Norfolk,England,5380.0,4,0.74
+Perth and Kinross,Scotland,5384.9,4,0.74
+Hertfordshire,England,1641.6,1,0.61
+Powys,Wales,5198.4,3,0.58
+Wiltshire,England,3488.3,2,0.57
+East Sussex,England,1797.7,1,0.56
+Hampshire,England,3773.7,2,0.53
+Herefordshire,England,2181.4,1,0.46
+Stirling,Scotland,2255.5,1,0.44
+Dumfries and Galloway,Scotland,6437.9,2,0.31
+Highland,Scotland,26138.0,8,0.31
+Argyll and Bute,Scotland,6979.4,2,0.29
+Essex,England,3672.0,1,0.27
+Kent,England,3741.3,1,0.27
+Suffolk,England,3799.9,1,0.26
+Lincolnshire,England,6979.2,1,0.14
+Dundee City,Scotland,59.5,0,0.0
+East Dunbartonshire,Scotland,174.6,0,0.0
+East Renfrewshire,Scotland,174.0,0,0.0
+Falkirk,Scotland,296.6,0,0.0
+Inverclyde,Scotland,161.9,0,0.0
+Midlothian,Scotland,354.9,0,0.0
+Na h-Eileanan Siar,Scotland,3060.4,0,0.0
+Northamptonshire,England,2369.1,0,0.0
+Orkney Islands,Scotland,1008.7,0,0.0
+Renfrewshire,Scotland,261.5,0,0.0
+Rutland,England,394.6,0,0.0
+Shetland Islands,Scotland,1452.0,0,0.0
+West Dunbartonshire,Scotland,176.9,0,0.0

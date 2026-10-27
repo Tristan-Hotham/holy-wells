@@ -1,0 +1,9 @@
+step,features_remaining,dropped
+All OSM features with a loose well-like name (input extract),66517,
+"Name has a well word (well, wells, ffynnon, tobar, tober, tubber, fuaran, chibbyr, venton, clootie) as a word, which drops Wellington, Bridewell, Powell, Maxwell, Cromwell, Boswell, spa and spring names",11299,55218
+"Not a road, building, business, organisation or settlement by name; topographic words (hill, green, head ...) drop a name only when it does not end in the well word (word lists in code)",4875,6424
+"Tags not those of a different kind of feature (natural only spring, water or wetland; man_made only water_well; amenity only place_of_worship, drinking_water, fountain or watering_place)",4613,262
+"Evidence it is a well: tagged as a spring or well, or as religious, or historic and named as a well, or (if untagged in the extract) named as a saint's, holy or folk well in two or more words; untagged one-word names (Holywell, Ladywell) and untagged Tober and Tobar names are dropped because most are places or townlands",2816,1797
+After removing OSM duplicates (same name within 150 m),2717,99
+"Inside the study area (land of Britain, Ireland and the Isle of Man, within about 3 km of the coast)",2702,15
+After removing OSM features within 150 m of an NMS holy well,1565,1137
