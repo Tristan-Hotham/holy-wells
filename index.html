@@ -462,5 +462,6 @@ resp(document.getElementById("church"), (W0, nar) => {
   t.innerHTML = `<thead><tr><th>OpenStreetMap filter step</th><th class="num">Kept</th><th class="num">Dropped</th></tr></thead><tbody>` + R.osm_steps.map(s => { const d = prev == null ? "" : fmt(prev - s.n); prev = s.n; return `<tr><td>${esc(s.step)}</td><td class="num">${fmt(s.n)}</td><td class="num">${d}</td></tr>`; }).join("") + "</tbody>";
 })();
 </script>
+<script src="https://tristan-hotham.github.io/assets/site-nav.js" defer></script>
 </body>
 </html>
